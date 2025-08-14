@@ -1,0 +1,492 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "default": false,
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "${grafanaurl}/d/bed40357-8f3d-480b-ac69-70bc428d9d40/workstation-status?orgId=1&refresh=10s&var-fqdn=${__data.fields.fqdn}"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "fqdn"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Uptime"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 604800
+                    },
+                    {
+                      "color": "red",
+                      "value": 1209600
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Certs expiring 90d"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Role"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU %"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 119
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "RAM %"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 147
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.2.2+security-01",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,role,layer) ((1-rate(cim_perfcpu_percentidletime{name=\"_Total\",role=\"aws_ws\"}[$__rate_interval]) / rate(cim_perfcpu_timestamp_sys100ns {name=\"_Total\"}[$__rate_interval]))*100 > $cpu_threshold) or clamp_max(absent(nonexistent{fqdn=\"none\"}), 0)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "CPU"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,role,layer) ((1-(cim_os_freephysicalmemory{role=\"aws_ws\"} / cim_os_totalvisiblememorysize))*100 > $ram_threshold) or clamp_max(absent(nonexistent{fqdn=\"none\"}), 0)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "RAM"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(max by (fqdn,role,layer) (1 - cim_disk_freespace{drivetype=\"3\",role=\"aws_ws\"} / cim_disk_size{drivetype=\"3\"})*100 > $disk_threshold) or clamp_max(absent(nonexistent{fqdn=\"none\"}), 0)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Disk"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,ipaddress) (\r\n  label_replace(\r\n    up{role=\"aws_ws\"}, \"ipaddress\", \"$1\", \"address\", \"(.*)\"\r\n    )\r\n)\r\n+ on(ipaddress) group_left(username) (\r\n    0 * aws_workspaces_info{username=~\"$username\"}\r\n)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "username"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "fqdn",
+            "mode": "inner"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {
+              "Value #CPU": true,
+              "Value #Certs": false,
+              "Value #Disk": true,
+              "Value #RAM": true,
+              "fqdn": true,
+              "role 1": false,
+              "username": true
+            },
+            "indexByName": {
+              "Time 1": 10,
+              "Time 2": 19,
+              "Time 3": 9,
+              "Time 4": 8,
+              "Time 5": 18,
+              "Time 6": 32,
+              "Time 7": 35,
+              "Value #CPU": 2,
+              "Value #Certs": 7,
+              "Value #Disk": 4,
+              "Value #Info": 26,
+              "Value #RAM": 3,
+              "Value #Uptime": 6,
+              "Value #username": 29,
+              "__name__": 20,
+              "caption": 21,
+              "dn": 27,
+              "fqdn": 0,
+              "instance": 22,
+              "ipaddress": 28,
+              "job": 23,
+              "layer 1": 11,
+              "layer 2": 12,
+              "layer 3": 14,
+              "layer 4": 16,
+              "layer 5": 30,
+              "layer 6": 33,
+              "osarchitecture": 24,
+              "role 1": 5,
+              "role 2": 13,
+              "role 3": 15,
+              "role 4": 17,
+              "role 5": 31,
+              "role 6": 34,
+              "status": 25,
+              "username": 1
+            },
+            "renameByName": {
+              "Value #CPU": "CPU %",
+              "Value #Certs": "Certs expiring 90d",
+              "Value #Disk": "Disk Used %",
+              "Value #RAM": "RAM %",
+              "Value #Uptime": "Uptime",
+              "fqdn": "Machine",
+              "role": "Role",
+              "role 1": "Role",
+              "username": "UserName"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(aws_workspaces_info,username)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "UserName",
+        "multi": false,
+        "name": "username",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(aws_workspaces_info,username)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "CPU% >",
+        "name": "cpu_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "RAM% >",
+        "name": "ram_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "Disk Used % >",
+        "name": "disk_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://awspsamjba3lv.nclmiami.ncl.com/grafana",
+          "value": "http://awspsamjba3lv.nclmiami.ncl.com/grafana"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "fe37eb96-e778-4098-b04d-bf73e9683d48"
+        },
+        "definition": "samm-config- (infinity) json",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "grafanaurl",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "backend",
+            "refId": "variable",
+            "root_selector": "grafanaurl",
+            "source": "url",
+            "type": "json",
+            "url": "https://s3.us-east-1.amazonaws.com/samm.samana.cloud/${__org.name}/config.json",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Workspaces Overview",
+  "uid": "248a36a7-1e83-4460-9341-ae917e0dcc50",
+  "version": 4,
+  "weekStart": ""
+}

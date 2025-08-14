@@ -1,0 +1,1780 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 65,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "incluprodars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "OS Info",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://samm.pr.mmmhc.com:3000/d/c96dd703-89d1-42e6-be4d-c9ccf02b7487/server-status?orgId=1&refresh=10s&var-fqdn=${vm_fqdn}"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "incluprodars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Host Info",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://samm.pr.mmmhc.com:3000/d/ceje21dg8hlogc/xs-host-info?orgId=1&var-xen_host_uuid=${xen_host_uuid}"
+    }
+  ],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "Halted": {
+                  "color": "#e02f44",
+                  "index": 0,
+                  "text": "Halted"
+                },
+                "Running": {
+                  "color": "#73bf69",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5794f2"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "xen_vm_info{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{name_label}}",
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "Basic CPU Info",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#f59e0b",
+                "value": 70
+              },
+              {
+                "color": "#e02f44",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 12,
+        "y": 0
+      },
+      "id": 13,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 14,
+          "valueSize": 16
+        },
+        "thresholdsDisplayMode": "colorBackground"
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "avg(xen_vm_cpu{uuid=\"$vm_uuid\"}) * 100",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "CPU Info",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 60,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#f59e0b",
+                "value": 0.8
+              },
+              {
+                "color": "#e02f44",
+                "value": 0.9
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 9,
+        "x": 15,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "xen_vm_cpu{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Core: {{index}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "CPU Core Performance",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "links": [
+            {
+              "title": "XS Host Info",
+              "url": "/d/xs-host-info-prod/xs-host-info-prod?orgId=1&var-xen_host_uuid=${xen_host_uuid}"
+            }
+          ],
+          "mappings": [
+            {
+              "options": {
+                "Halted": {
+                  "color": "#e02f44",
+                  "index": 0,
+                  "text": "Halted"
+                },
+                "Running": {
+                  "color": "#73bf69",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5794f2"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 0,
+        "y": 2
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "xen_vm_info{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "Host ${xen_host_name} (${xen_host_ip})",
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 9,
+        "x": 3,
+        "y": 2
+      },
+      "id": 11,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); padding: 16px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);'>\r\n\t<div style='display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr; gap: 12px; height: 100%;'>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>VM Name</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px;'>${vm_name_label}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Power State</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; padding: 3px 10px; background: rgba(115, 191, 105, 0.2); border-radius: 6px; border: 1px solid rgba(115, 191, 105, 0.3);'>${vm_power_state}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Resident On</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px;'>${xen_host_name} (${xen_host_ip})</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>UUID</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${vm_uuid}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Primary IP</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${vm_ip_address1}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Secondary IP</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${vm_ip_address2}</span>\r\n\t\t</div>\r\n\t</div>\r\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.1",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "links": [
+            {
+              "title": "XS Pool Info",
+              "url": "/d/xs-pool-info-prod/xs-pool-info-prod?orgId=1&var-xen_pool_uuid=${xen_pool_uuid}"
+            }
+          ],
+          "mappings": [
+            {
+              "options": {
+                "Halted": {
+                  "color": "#e02f44",
+                  "index": 0,
+                  "text": "Halted"
+                },
+                "Running": {
+                  "color": "#73bf69",
+                  "index": 1,
+                  "text": "Running"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5794f2"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "id": 24,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "xen_vm_info{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "${xen_pool_name}",
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "displayName": "GB",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#e02f44",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 12,
+        "y": 8
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "(xen_vm_memory{uuid=\"$vm_uuid\"} /1024)/1024/1024",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "RAM",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#f59e0b",
+                "value": 0.7
+              },
+              {
+                "color": "#e02f44",
+                "value": 0.9
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 12,
+        "y": 11
+      },
+      "id": 5,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 41,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "valueSize": 12
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "1-((xen_vm_memory_internal_free{uuid=\"$vm_uuid\"} / 1024 / 1024)/(xen_vm_memory{uuid=\"$vm_uuid\"} / 1024 / 1048576))",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "RAM Utilization",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#e02f44",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 0,
+        "y": 13
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "xen_vm_vbd_iops_read{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "Disk {{prodice}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "expr": "-xen_vm_vbd_iops_write{uuid=\"$vm_uuid\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{prodice}}",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Total IOPs per Disk",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "right",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#e02f44",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 7,
+        "y": 13
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "-xen_vm_vif_rx{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "RX:{{prodice}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "xen_vm_vif_tx{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "TX:{{prodice}}",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        }
+      ],
+      "title": "Network Interfaces",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "Read / Write Latency",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#f59e0b",
+                "value": 2
+              },
+              {
+                "color": "#e02f44",
+                "value": 5
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 15,
+        "y": 13
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "-xen_vm_vbd_write_latency{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "WR Disk: {{prodice}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "xen_vm_vbd_read_latency{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "RD Disk: {{prodice}}",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        }
+      ],
+      "title": "Read / Write Disk Latency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 2097152,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#5794f2",
+                "value": 1048576
+              },
+              {
+                "color": "#f59e0b",
+                "value": 1572864
+              },
+              {
+                "color": "#e02f44",
+                "value": 1887436
+              }
+            ]
+          },
+          "unit": "binBps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 7,
+        "y": 21
+      },
+      "id": 4,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 15,
+        "minVizHeight": 10,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "valueSize": 12
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(xen_vm_vif_rx{uuid=\"$vm_uuid\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "{{prodice}}",
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(xen_vm_vif_tx{uuid=\"$vm_uuid\"})",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{prodice}}",
+          "range": false,
+          "refId": "B"
+        }
+      ],
+      "title": "Interfaces",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1000,
+          "min": -1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69"
+              },
+              {
+                "color": "#f59e0b",
+                "value": 600
+              },
+              {
+                "color": "#e02f44",
+                "value": 800
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 9,
+        "x": 15,
+        "y": 21
+      },
+      "id": 1,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 10,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "valueSize": 12
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "xen_vm_vbd_latency{uuid=\"$vm_uuid\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "{{prodice}}",
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Disk Latency",
+      "type": "bargauge"
+    }
+  ],
+  "preload": false,
+  "refresh": "5s",
+  "schemaVersion": 41,
+  "tags": [
+    "VMInfo",
+    "XenServer"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "samm-prometheus",
+          "value": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "hide": 2,
+        "name": "ds_samm_prometheus",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/^samm-prometheus/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info)",
+        "description": "VM Information",
+        "includeAll": false,
+        "label": "VM_UUID",
+        "name": "vm_uuid",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*name_label=\"(?<text>[^\"]*)\".*uuid=\"(?<value>[^\"]*)\".*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{uuid=\"$vm_uuid\"})",
+        "description": "VM Name Label",
+        "hide": 2,
+        "includeAll": false,
+        "label": "VM Name",
+        "name": "vm_name_label",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{uuid=\"$vm_uuid\"})",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*name_label=\"(?<value>[^\"]*)\".*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{uuid=\"$vm_uuid\"})",
+        "description": "VM Power State",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Power State",
+        "name": "vm_power_state",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{uuid=\"$vm_uuid\"})",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*power_state=\"(?<value>[^\"]*)\".*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{uuid=\"$vm_uuid\"})",
+        "description": "VM Resident On",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Resident On",
+        "name": "vm_resident_on",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{uuid=\"$vm_uuid\"})",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*resident_on=\"(?<value>[^\"]*)\".*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (os_version_distro) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+        "description": "VM Operating System",
+        "hide": 2,
+        "includeAll": false,
+        "label": "OS",
+        "name": "vm_os_version_distro",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (os_version_distro) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (networks) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "VP IP Address",
+        "name": "vm_ip_address1",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (networks) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": ".*'0/ip': '([^']+)'.*",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (networks) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "VP IP Address",
+        "name": "vm_ip_address2",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (networks) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": ".*'1/ip': '([^']+)'.*",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (networks) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "VP IP Address",
+        "name": "m_ip_address2",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(xen_vm_info{name_label=\"$vm_name_label\"} * on (guest_metrics) group_left (networks) label_replace(xen_vm_guest_metrics_info, \"guest_metrics\", \"$1\", \"uuid\", \"(.*)\"))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": ".*'1/ip': '([^']+)'.*",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_vm_info{uuid=\"$vm_uuid\"},guest_metrics)",
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "name": "vm_guest_metrics_uuid",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_vm_info{uuid=\"$vm_uuid\"},guest_metrics)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_vm_guest_metrics_info{uuid=\"$vm_guest_metrics_uuid\"},netbios_name)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "vm_netbios_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_vm_guest_metrics_info{uuid=\"$vm_guest_metrics_uuid\"},netbios_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(cim_os_lastbootuptime{instance=~\"((?i)${vm_name_label})\"})",
+        "hide": 2,
+        "includeAll": false,
+        "name": "vm_fqdn",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(cim_os_lastbootuptime{instance=~\"((?i)${vm_name_label})\"})",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},hostname)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_host_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},hostname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},address)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_host_ip",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},address)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},uuid)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_host_uuid",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},uuid)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_pool_info{instance=\"$xen_host_instance\"},name_label)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_pool_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_pool_info{instance=\"$xen_host_instance\"},name_label)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},instance)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_host_instance",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_host_info{uuid=\"$vm_resident_on\"},instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_pool_info{instance=\"$xen_host_instance\"},uuid)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_pool_uuid",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_pool_info{instance=\"$xen_host_instance\"},uuid)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": " ",
+          "value": " "
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},hostname)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "xen_host_hostname",
+        "name": "xen_host_hostname",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},hostname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "https://samm.pr.mmmhc.com/grafana",
+          "value": "https://samm.pr.mmmhc.com/grafana"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "fe37eb96-e778-4098-b04d-bf73e9683d48"
+        },
+        "definition": "samm-config- (infinity) json",
+        "hide": 2,
+        "includeAll": false,
+        "name": "grafanaurl",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "backend",
+            "refId": "variable",
+            "root_selector": "grafanaurl",
+            "source": "url",
+            "type": "json",
+            "url": "https://s3.amazonaws.com/samm.samana.cloud/${__org.name}/config.json",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "VM Info prod",
+  "uid": "xs-vm-info-prod",
+  "version": 4
+}

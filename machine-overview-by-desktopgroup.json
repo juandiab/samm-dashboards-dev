@@ -1,0 +1,638 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 60,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "links": [
+            {
+              "title": "",
+              "url": "/d/c96dd703-89d1-42e6-be4d-c9ccf02b7487/server-status?orgId=1&refresh=10s&var-fqdn=${__data.fields.fqdn}"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 0.0001
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "fqdn"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Uptime"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "super-light-red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 0.0001
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 604800
+                    },
+                    {
+                      "color": "red",
+                      "value": 1209600
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 137
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Registration State"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "color": "green",
+                        "index": 1,
+                        "text": "Registered"
+                      },
+                      "2": {
+                        "color": "red",
+                        "index": 2,
+                        "text": "Unregistered"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value #Power"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "red",
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "2": {
+                        "color": "red",
+                        "index": 2,
+                        "text": "Off"
+                      },
+                      "3": {
+                        "color": "green",
+                        "index": 3,
+                        "text": "On"
+                      },
+                      "4": {
+                        "color": "red",
+                        "index": 4,
+                        "text": "Suspended"
+                      },
+                      "5": {
+                        "color": "blue",
+                        "index": 5,
+                        "text": "Turning On"
+                      },
+                      "6": {
+                        "color": "orange",
+                        "index": 6,
+                        "text": "Turning Off"
+                      },
+                      "7": {
+                        "color": "orange",
+                        "index": 7,
+                        "text": "Suspending"
+                      },
+                      "8": {
+                        "color": "blue",
+                        "index": 8,
+                        "text": "Resuming"
+                      },
+                      "9": {
+                        "color": "purple",
+                        "index": 9,
+                        "text": "Unmanaged"
+                      },
+                      "10": {
+                        "color": "purple",
+                        "index": 10,
+                        "text": "Not Supported"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Machine"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 20,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Machine"
+          }
+        ]
+      },
+      "pluginVersion": "11.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,desktopgroup_name) ((1-rate(cim_perfcpu_percentidletime{name=\"_Total\",fqdn=~\"$fqdn\"}[$__rate_interval]) / rate(cim_perfcpu_timestamp_sys100ns[$__rate_interval]))*100 > $cpu_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum (ctx_machine_isinmaintenancemode{desktopgroup_name=\"$desktopgroup_name\"} * 0) without (hostingservername), \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "CPU"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn) ((1-(cim_os_freephysicalmemory / cim_os_totalvisiblememorysize))*100 > $ram_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum (ctx_machine_isinmaintenancemode{desktopgroup_name=\"$desktopgroup_name\"}) without (hostingservername) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "RAM"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(max by (fqdn) (1 - cim_disk_freespace{drivetype=\"3\"} / cim_disk_size)*100 > $disk_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum (ctx_machine_isinmaintenancemode{desktopgroup_name=\"$desktopgroup_name\"}) without (hostingservername) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Disk"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn) (time() - cim_os_lastbootuptime > $uptime_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum (ctx_machine_isinmaintenancemode{desktopgroup_name=\"$desktopgroup_name\"}) without (hostingservername) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Uptime"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn) (label_replace(ctx_machine_currentregistrationstate{desktopgroup_name=\"$desktopgroup_name\"}, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\")) $register_filter",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Registration"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn) (label_replace(ctx_machine_currentpowerstate{desktopgroup_name=\"$desktopgroup_name\"}, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\")) $power_filter",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Power"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "fqdn",
+            "mode": "inner"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Time 4": true,
+              "Time 5": true,
+              "Time 6": true,
+              "desktopgroup_name": true,
+              "desktopgroup_name 1": true,
+              "desktopgroup_name 2": true,
+              "desktopgroup_name 3": true,
+              "desktopgroup_name 4": true,
+              "dnsname": true,
+              "dnsname 2": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value #CPU": "CPU %",
+              "Value #Disk": "Disk Used %",
+              "Value #Power": "Power State",
+              "Value #RAM": "RAM %",
+              "Value #Registration": "Registration State",
+              "Value #Uptime": "Uptime",
+              "fqdn": "Machine"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "",
+          "value": ""
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(ctx_machine_isinmaintenancemode,desktopgroup_name)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Desktopgroup Name",
+        "multi": false,
+        "name": "desktopgroup_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ctx_machine_isinmaintenancemode,desktopgroup_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "CPU% >",
+        "name": "cpu_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "RAM% >",
+        "name": "ram_threshold",
+        "options": [
+          {
+            "selected": false,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "Disk Used % >",
+        "name": "disk_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": ".*",
+          "value": ".*"
+        },
+        "hide": 0,
+        "label": "Machine Name",
+        "name": "fqdn",
+        "options": [
+          {
+            "selected": true,
+            "text": ".*",
+            "value": ".*"
+          }
+        ],
+        "query": ".*",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "Uptime(secs)>",
+        "name": "uptime_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": ">-1"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Register Filter",
+        "multi": false,
+        "name": "register_filter",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": ">-1"
+          },
+          {
+            "selected": false,
+            "text": "Unknown",
+            "value": "==0"
+          },
+          {
+            "selected": false,
+            "text": "Registered",
+            "value": "==1"
+          },
+          {
+            "selected": false,
+            "text": "Unregistered",
+            "value": "==2"
+          }
+        ],
+        "query": "All : >-1,Unknown : ==0,Registered : ==1,Unregistered : ==2",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": ">-1"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Power",
+        "multi": false,
+        "name": "power_filter",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": ">-1"
+          },
+          {
+            "selected": false,
+            "text": "On",
+            "value": "==3"
+          },
+          {
+            "selected": false,
+            "text": "Not on",
+            "value": "!= 3"
+          }
+        ],
+        "query": "All : >-1,On : ==3,Not on : != 3",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Machine Overview by DesktopGroup",
+  "uid": "a2b35c70-7470-4f91-a4bb-c669453654c9",
+  "version": 7,
+  "weekStart": ""
+}

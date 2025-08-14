@@ -1,0 +1,518 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "default": false,
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "${grafanaurl}/d/9f4cbad0-840f-433d-9c37-e43e68c81e48/appstream-status?orgId=1&refresh=10s&var-fqdn=${__data.fields.fqdn}"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "fqdn"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Uptime"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 604800
+                    },
+                    {
+                      "color": "red",
+                      "value": 1209600
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Certs expiring 90d"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Machine"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 288
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "UserName"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 273
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.2.2+security-01",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,address) (up{role=\"aws_appstream\"})\r\n+ on(address) group_left(fleetname,stackname) (\r\n  0 * sum by (address,fleetname,stackname) (\r\n    label_replace(\r\n      aws_appstream_sessions_state{userid=~\"$userid\",stackname=~\"$stackname\",fleetname=~\"$fleetname\"},\r\n      \"address\", \"$1\", \"networkaccessconfiguration_eniprivateipaddress\", \"(.*)\"\r\n    )\r\n  )\r\n)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "username"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,role,layer) ((1-rate(cim_perfcpu_percentidletime{name=\"_Total\",role=\"aws_appstream\"}[$__rate_interval]) / rate(cim_perfcpu_timestamp_sys100ns {name=\"_Total\"}[$__rate_interval]))*100 > $cpu_threshold)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "CPU"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (fqdn,role,layer) ((1-(cim_os_freephysicalmemory{role=\"aws_appstream\"} / cim_os_totalvisiblememorysize))*100 > $ram_threshold)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "RAM"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(max by (fqdn,role,layer) (1 - cim_disk_freespace{drivetype=\"3\",role=\"aws_appstream\"} / cim_disk_size{drivetype=\"3\"})*100 > $disk_threshold)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Disk"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "fqdn",
+            "mode": "inner"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {
+              "Value #CPU": true,
+              "Value #Certs": false,
+              "Value #Disk": true,
+              "Value #RAM": true,
+              "fleetname": true,
+              "fqdn": true,
+              "stackname": true,
+              "userid": true
+            },
+            "indexByName": {
+              "Time 1": 10,
+              "Time 2": 16,
+              "Time 3": 9,
+              "Time 4": 8,
+              "Value #CPU": 2,
+              "Value #Disk": 4,
+              "Value #RAM": 3,
+              "Value #username": 17,
+              "address": 18,
+              "fleetname": 6,
+              "fqdn": 0,
+              "layer 1": 11,
+              "layer 2": 12,
+              "layer 3": 14,
+              "role 1": 7,
+              "role 2": 13,
+              "role 3": 15,
+              "stackname": 5,
+              "userid": 1
+            },
+            "renameByName": {
+              "Value #CPU": "CPU %",
+              "Value #Disk": "Disk Used %",
+              "Value #RAM": "RAM %",
+              "fleetname": "Fleet",
+              "fqdn": "Machine",
+              "stackname": "Stack",
+              "userid": "UserName"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "query_result(aws_appstream_sessions_state == 1)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "UserName",
+        "multi": false,
+        "name": "userid",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(aws_appstream_sessions_state == 1)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*userid=\"(?<text>[^\"]+)\".*$/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "CPU% >",
+        "name": "cpu_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "RAM% >",
+        "name": "ram_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "label": "Disk Used % >",
+        "name": "disk_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "http://awspsamjba3lv.nclmiami.ncl.com/grafana",
+          "value": "http://awspsamjba3lv.nclmiami.ncl.com/grafana"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "fe37eb96-e778-4098-b04d-bf73e9683d48"
+        },
+        "definition": "samm-config- (infinity) json",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "grafanaurl",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "backend",
+            "refId": "variable",
+            "root_selector": "grafanaurl",
+            "source": "url",
+            "type": "json",
+            "url": "https://s3.us-east-1.amazonaws.com/samm.samana.cloud/${__org.name}/config.json",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(aws_appstream_sessions_state,fleetname)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Fleet",
+        "multi": false,
+        "name": "fleetname",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(aws_appstream_sessions_state,fleetname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(aws_appstream_sessions_state,stackname)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Stack",
+        "multi": false,
+        "name": "stackname",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(aws_appstream_sessions_state,stackname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Appstream Overview",
+  "uid": "0a11f903-0d39-4c4d-848e-c1b96c0c8b60",
+  "version": 5,
+  "weekStart": ""
+}

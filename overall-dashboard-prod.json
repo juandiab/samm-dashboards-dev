@@ -1,0 +1,1590 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 67,
+  "links": [],
+  "panels": [
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 1,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        H<br/>O<br/>S<br/>T<br/><br/><br/>I<br/>N<br/>F<br/>O <br/>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.1",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 1,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_host_cpu_avg > 0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_host_cpu_avg > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_host_cpu_avg > 0 <=0.7 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "⚡CPU",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 3,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ((1-(xen_host_memory_free_kib/xen_host_memory_total_kib)) > 0.90 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ((1-(xen_host_memory_free_kib/xen_host_memory_total_kib)) > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ((1-(xen_host_memory_free_kib/xen_host_memory_total_kib)) > 0 <=0.7 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾RAM",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 5,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_read_latency > 5000 )  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_read_latency > 3000 <= 5000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(xen_host_sr_read_latency < 3000 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾SR Read Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 7,
+        "y": 0
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_write_latency > 5000 )  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_write_latency > 3000 <= 5000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(xen_host_sr_write_latency < 3000 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾SR Write Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 1,
+        "x": 9,
+        "y": 0
+      },
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        V<br/>M<br/><br/><br/>I<br/>N<br/>F<br/>O <br/>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.1",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 10,
+        "y": 0
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_cpu > 0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_cpu > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_cpu > 0 <=0.7 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "⚡CPU Cores",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 12,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( (1-((xen_vm_memory_internal_free / 1024 / 1024)/(xen_vm_memory / 1024 / 1048576))) > 0.90 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( (1-((xen_vm_memory_internal_free / 1024 / 1024)/(xen_vm_memory / 1024 / 1048576))) > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( (1-((xen_vm_memory_internal_free / 1024 / 1024)/(xen_vm_memory / 1024 / 1048576))) > 0 <= 0.7  ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾RAM",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 14,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_read_latency > 1000 )   or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_read_latency > 800 <= 1000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_vbd_read_latency < 800)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾Read Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 16,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_write_latency > 1000 )   or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_write_latency > 800 <= 1000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_vbd_write_latency < 800)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾Write Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 20,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "xen_host_pool_session_count",
+          "instant": true,
+          "legendFormat": "{{name_label}}",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Pool Session Count",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 1,
+        "y": 11
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_host_cpu_avg > 0  )",
+          "instant": true,
+          "legendFormat": "Running Hosts",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 10,
+        "y": 11
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_memory > 0)",
+          "instant": true,
+          "legendFormat": "Running Virtual Machines",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_pool_info > 0)",
+          "instant": true,
+          "legendFormat": "XenServer Pools",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); padding: 16px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);'>\n    <div style='display: flex; justify-content: center; gap: 30px; align-items: center; height: 100%;'>\n        <div style='text-align: center; padding: 15px; background: rgba(58, 130, 197, 0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; min-width: 100px;'>\n            <div style='font-size: 24px; font-weight: bold; color: #ffffff;'>$xen_pool_count</div>\n            <div style='font-size: 12px; color: #cccccc; margin-top: 4px;'>Total Pools</div>\n        </div>\n        <div style='text-align: center; padding: 15px; background: rgba(99, 134, 209, 0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; min-width: 100px;'>\n            <div style='font-size: 24px; font-weight: bold; color: #ffffff;'>$xen_host_count</div>\n            <div style='font-size: 12px; color: #cccccc; margin-top: 4px;'>Total Hosts</div>\n        </div>\n        <div style='text-align: center; padding: 15px; background: rgba(87, 175, 202, 0.885); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; min-width: 100px;'>\n            <div style='font-size: 24px; font-weight: bold; color: #ffffff;'> $xen_vm_count</div>\n            <div style='font-size: 12px; color: #cccccc; margin-top: 4px;'>Total VMs</div>\n        </div>\n    </div>\n</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "12.0.1",
+      "title": "Summary Statistics",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "https://samm.pr.mmmhc.com/grafana",
+          "value": "https://samm.pr.mmmhc.com/grafana"
+        },
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "fe37eb96-e778-4098-b04d-bf73e9683d48"
+        },
+        "definition": "",
+        "hide": 2,
+        "name": "grafanaurl",
+        "options": [],
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "backend",
+            "refId": "variable",
+            "root_selector": "",
+            "source": "url",
+            "type": "json",
+            "url": "https://s3.amazonaws.com/samm.samana.cloud/${__org.name}/config.json",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "samm-prometheus",
+          "value": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "hide": 2,
+        "name": "ds_samm_prometheus",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/^samm-prometheus/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "78",
+          "value": "78"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(count ( xen_host_cpu_avg >= 0))",
+        "hide": 2,
+        "name": "xen_host_count",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(count ( xen_host_cpu_avg >= 0))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*{} (?<value>.*) .*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "5",
+          "value": "5"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(count ( xen_pool_info))",
+        "hide": 2,
+        "name": "xen_pool_count",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(count ( xen_pool_info))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*{} (?<value>.*) .*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "1791",
+          "value": "1791"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(count ( xen_vm_info))",
+        "hide": 2,
+        "name": "xen_vm_count",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(count ( xen_vm_info))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*{} (?<value>.*) .*/",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Overall Dashboard prod",
+  "uid": "41b2fdb6-c502-45d0-a904-60b3349ad14e",
+  "version": 20
+}
