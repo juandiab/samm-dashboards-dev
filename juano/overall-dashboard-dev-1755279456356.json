@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 74,
+  "id": 72,
   "links": [],
   "panels": [
     {
@@ -49,19 +49,19 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 5,
+        "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 13,
+      "id": 25,
       "options": {
         "SVGBaseFix": true,
         "add100Percentage": true,
         "calcsMutation": "standard",
         "centerAlignContent": true,
         "codeData": "{\n  \"text\": \"Random text\"\n}",
-        "css": "* {\n  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n  margin: 0;\n  padding: 0;\n}\n\n.dashboard-header {\n  display: flex;\n  align-items: center;\n  height: 100%;\n  background: linear-gradient(135deg, #4A90E2 0%, #2E5A8F 50%, #1E3A5F 100%);\n  border-radius: 12px;\n  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);\n  padding: 20px;\n}\n\n.logo-container {\n  display: flex;\n  align-items: center;\n  margin-right: 30px;\n  flex-shrink: 0;\n}\n\n.logo-svg {\n  width: 120px;\n  height: 120px;\n  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));\n}\n\n.title-section {\n  text-align: left;\n  color: white;\n  flex-grow: 1;\n}\n\n.main-title {\n  font-size: 28px;\n  font-weight: 700;\n  margin-bottom: 8px;\n  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n}\n\n.subtitle {\n  font-size: 16px;\n  font-weight: 400;\n  opacity: 0.9;\n  margin-bottom: 12px;\n}\n\n.time-display {\n  font-size: 13px;\n  font-weight: 300;\n  opacity: 0.8;\n  background: rgba(255, 255, 255, 0.15);\n  padding: 8px 16px;\n  border-radius: 18px;\n  backdrop-filter: blur(10px);\n  display: inline-block;\n}\n\n@media (max-width: 768px) {\n  .dashboard-header {\n    flex-direction: column;\n    text-align: center;\n  }\n  \n  .logo-container {\n    margin-right: 0;\n    margin-bottom: 20px;\n  }\n  \n  .title-section {\n    text-align: center;\n  }\n  \n  .main-title {\n    font-size: 24px;\n  }\n}",
+        "css": "* {\n  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n  margin: 0;\n  padding: 0;\n}\n\n.dashboard-header {\n  display: flex;\n  align-items: center;\n  height: 120px;\n  background: linear-gradient(135deg, #4A90E2 0%, #2E5A8F 50%, #1E3A5F 100%);\n  border-radius: 12px;\n  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);\n  padding: 12px;\n}\n\n.logo-container {\n  display: flex;\n  align-items: center;\n  margin-right: 20px;\n  flex-shrink: 0;\n}\n\n.logo-svg {\n  width: 120px;\n  height: 120px;\n  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));\n}\n\n.title-section {\n  text-align: left;\n  color: white;\n  flex-grow: 1;\n}\n\n.main-title {\n  font-size: 24px;\n  font-weight: 700;\n  margin-bottom: 8px;\n  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);\n}\n\n.subtitle {\n  font-size: 14px;\n  font-weight: 400;\n  opacity: 0.9;\n  margin-bottom: 12px;\n}\n\n.time-display {\n  font-size: 13px;\n  font-weight: 300;\n  opacity: 0.8;\n  background: rgba(255, 255, 255, 0.15);\n  padding: 6px 12px;\n  border-radius: 18px;\n  backdrop-filter: blur(10px);\n  display: inline-block;\n}\n\n@media (max-width: 768px) {\n  .dashboard-header {\n    flex-direction: column;\n    text-align: center;\n  }\n  \n  .logo-container {\n    margin-right: 0;\n    margin-bottom: 20px;\n  }\n  \n  .title-section {\n    text-align: center;\n  }\n  \n  .main-title {\n    font-size: 24px;\n  }\n}",
         "dynamicData": false,
         "dynamicFieldDisplayValues": false,
         "dynamicHtmlGraphics": false,
@@ -103,1512 +103,36 @@
           "refId": "A"
         }
       ],
-      "title": "SAMM",
+      "title": "",
+      "transparent": true,
       "type": "gapit-htmlgraphics-panel"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-      },
+      "description": "",
       "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 42,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": 3600000,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Active"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "blue",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Disconnected"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 9,
-        "x": 15,
-        "y": 0
-      },
-      "id": 7,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": false
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-          },
-          "editorMode": "code",
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"} == 0)",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Available Machines",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 42,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": 3600000,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Active"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "blue",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Disconnected"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 9,
-        "x": 15,
-        "y": 7
-      },
-      "id": 10,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": false
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-          },
-          "editorMode": "code",
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} == 0)",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Available Machines",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "unit"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "blue",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "E"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "F"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "orange",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 15,
+        "h": 13,
+        "w": 1,
         "x": 0,
-        "y": 8
-      },
-      "id": 1,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  )",
-          "instant": true,
-          "legendFormat": "Total",
-          "range": false,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"}  == 0) ",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "available",
-          "range": false,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"}  > 0)",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Use",
-          "range": false,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"}  == 1) ",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Registered",
-          "range": false,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  == 1)",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Maintenance",
-          "range": false,
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"}  != 1) ",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Unregistered",
-          "range": false,
-          "refId": "E"
-        }
-      ],
-      "title": "VDI (Multi Session VMs)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "unit"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "blue",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "E"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "F"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "orange",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 15,
-        "x": 0,
-        "y": 13
-      },
-      "id": 4,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  )",
-          "instant": true,
-          "legendFormat": "Total",
-          "range": false,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"}  == 0) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}   )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "available",
-          "range": false,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"}  > 0) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}   )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Use",
-          "range": false,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"}  == 1) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}   )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Registered",
-          "range": false,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  == 1) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}   )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Maintenance",
-          "range": false,
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"}  != 1) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}   )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Unregistered",
-          "range": false,
-          "refId": "E"
-        }
-      ],
-      "title": "",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 42,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": 3600000,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Active"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "blue",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Disconnected"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 9,
-        "x": 15,
-        "y": 14
+        "y": 5
       },
       "id": 9,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
         },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        H<br/>O<br/>S<br/>T<br/><br/><br/>I<br/>N<br/>F<br/>O <br/>\n    </div>",
+        "mode": "html"
       },
       "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-          },
-          "editorMode": "code",
-          "expr": "snmp_ns_aaastats_aaacursessions",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{instance}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "NetScaler AAA Current Sessions",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "unit"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "blue",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "E"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "F"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "orange",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 15,
-        "x": 0,
-        "y": 15
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "instant": true,
-          "legendFormat": "Total",
-          "range": false,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} == 0)",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "available",
-          "range": false,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} > 0) ",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Use",
-          "range": false,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} == 1) ",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Registered",
-          "range": false,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"} == 1) ",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Maintenance",
-          "range": false,
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} != 1)",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Unregistered",
-          "range": false,
-          "refId": "E"
-        }
-      ],
-      "title": "VDA (Single Session VMs)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "unit"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "blue",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "E"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "F"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "orange",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 15,
-        "x": 0,
-        "y": 20
-      },
-      "id": 5,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "instant": true,
-          "legendFormat": "Total",
-          "range": false,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} == 0) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "available",
-          "range": false,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} > 0) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Use",
-          "range": false,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} == 1) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Registered",
-          "range": false,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"} == 1) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "In Maintenance",
-          "range": false,
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} != 1) / count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "Unregistered",
-          "range": false,
-          "refId": "E"
-        }
-      ],
       "title": "",
       "transparent": true,
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "filterable": true,
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": "/.*/"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "dnsname"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden"
-              },
-              {
-                "id": "displayName",
-                "value": "Machine"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #A"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden"
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "Registration State"
-              },
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "0": {
-                        "color": "red",
-                        "index": 2,
-                        "text": "Unknown"
-                      },
-                      "1": {
-                        "color": "green",
-                        "index": 0,
-                        "text": "Registered"
-                      },
-                      "2": {
-                        "color": "red",
-                        "index": 1,
-                        "text": "Unregistered"
-                      }
-                    },
-                    "type": "value"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #B"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden"
-              },
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "0": {
-                        "color": "green",
-                        "index": 1,
-                        "text": "No"
-                      },
-                      "1": {
-                        "color": "red",
-                        "index": 0,
-                        "text": "Yes"
-                      }
-                    },
-                    "type": "value"
-                  }
-                ]
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-background"
-                }
-              },
-              {
-                "id": "displayName",
-                "value": "In Maintenance"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #C"
-            },
-            "properties": [
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "0": {
-                        "index": 0,
-                        "text": "Unknown"
-                      },
-                      "1": {
-                        "index": 1,
-                        "text": "Unavailable"
-                      },
-                      "2": {
-                        "index": 2,
-                        "text": "Off"
-                      },
-                      "3": {
-                        "index": 3,
-                        "text": "On"
-                      },
-                      "4": {
-                        "index": 4,
-                        "text": "Suspended"
-                      },
-                      "5": {
-                        "index": 5,
-                        "text": "TurningOn"
-                      },
-                      "6": {
-                        "index": 6,
-                        "text": "TurningOff"
-                      },
-                      "7": {
-                        "index": 7,
-                        "text": "Suspending"
-                      },
-                      "8": {
-                        "index": 8,
-                        "text": "Resuming"
-                      },
-                      "9": {
-                        "index": 9,
-                        "text": "Unmanaged"
-                      },
-                      "10": {
-                        "index": 10,
-                        "text": "NotSupported"
-                      }
-                    },
-                    "type": "value"
-                  }
-                ]
-              },
-              {
-                "id": "custom.hidden"
-              },
-              {
-                "id": "displayName",
-                "value": "Power State"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 9,
-        "x": 15,
-        "y": 21
-      },
-      "id": 6,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "frameIndex": 1,
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Registration State"
-          }
-        ]
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "ctx_machine_currentregistrationstate",
-          "format": "table",
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "ctx_machine_isinmaintenancemode",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "range": false,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "ctx_machine_currentpowerstate",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "C"
-        }
-      ],
-      "title": "Machines",
-      "transformations": [
-        {
-          "id": "joinByField",
-          "options": {
-            "byField": "dnsname",
-            "mode": "outer"
-          }
-        }
-      ],
-      "type": "table"
+      "type": "text"
     },
     {
       "datasource": {
@@ -1635,7 +159,7 @@
           {
             "matcher": {
               "id": "byFrameRefID",
-              "options": "C"
+              "options": "Critical"
             },
             "properties": [
               {
@@ -1646,10 +170,6 @@
                     {
                       "color": "red",
                       "value": 0
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
                     }
                   ]
                 }
@@ -1659,7 +179,7 @@
           {
             "matcher": {
               "id": "byFrameRefID",
-              "options": "A"
+              "options": "warning"
             },
             "properties": [
               {
@@ -1668,7 +188,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "blue",
+                      "color": "orange",
                       "value": 0
                     }
                   ]
@@ -1679,17 +199,17 @@
         ]
       },
       "gridPos": {
-        "h": 5,
-        "w": 15,
-        "x": 0,
-        "y": 22
+        "h": 11,
+        "w": 2,
+        "x": 1,
+        "y": 5
       },
-      "id": 8,
+      "id": 10,
       "options": {
         "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "center",
-        "orientation": "vertical",
+        "orientation": "auto",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
@@ -1699,9 +219,7 @@
           "values": false
         },
         "showPercentChange": false,
-        "text": {
-          "titleSize": 20
-        },
+        "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
@@ -1714,11 +232,12 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "count (snmp_ns_info_syscurmappedipcount)",
+          "expr": "count ( xen_host_cpu_avg > 0.9 ) or vector ( 0 )",
+          "hide": false,
           "instant": true,
-          "legendFormat": "Total",
+          "legendFormat": "CRITICAL",
           "range": false,
-          "refId": "A"
+          "refId": "Critical"
         },
         {
           "datasource": {
@@ -1727,12 +246,12 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum by (vsvrstate) (clamp(snmp_ns_vserverstats_vsvrhealth{vsvrstate=\"up\"}, 1, 1) or clamp_max(absent(nonexistent{vsvrstate=\"up\"}), 0))",
+          "expr": "count ( xen_host_cpu_avg > 0.7 <=0.9 ) or vector ( 0 )",
           "hide": false,
           "instant": true,
-          "legendFormat": "vServer Status UP",
+          "legendFormat": "WARNING",
           "range": false,
-          "refId": "B"
+          "refId": "warning"
         },
         {
           "datasource": {
@@ -1741,15 +260,15 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum by (vsvrstate) (clamp(snmp_ns_vserverstats_vsvrhealth{vsvrstate=\"down\"}, 1, 1) or clamp_max(absent(nonexistent{vsvrstate=\"down\"}), 0))",
+          "expr": "count ( xen_host_cpu_avg > 0 <=0.7 ) or vector ( 0 )",
           "hide": false,
           "instant": true,
-          "legendFormat": "vServer Status DOWN",
+          "legendFormat": "NORMAL",
           "range": false,
-          "refId": "C"
+          "refId": "ok"
         }
       ],
-      "title": "NetScalers",
+      "title": "⚡CPU",
       "transparent": true,
       "type": "stat"
     },
@@ -1774,93 +293,73 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 4,
-        "w": 15,
-        "x": 0,
-        "y": 27
+        "h": 11,
+        "w": 2,
+        "x": 3,
+        "y": 5
       },
       "id": 11,
       "options": {
-        "inlineEditing": true,
-        "panZoom": false,
-        "root": {
-          "background": {
-            "color": {
-              "field": "A-series",
-              "fixed": "transparent"
-            }
-          },
-          "border": {
-            "color": {
-              "fixed": "dark-green"
-            },
-            "radius": 34,
-            "width": 11
-          },
-          "constraint": {
-            "horizontal": "left",
-            "vertical": "top"
-          },
-          "elements": [
-            {
-              "background": {
-                "color": {
-                  "field": "Value",
-                  "fixed": "#D9D9D9"
-                }
-              },
-              "border": {
-                "color": {
-                  "fixed": "orange"
-                },
-                "width": 5
-              },
-              "config": {
-                "align": "center",
-                "color": {
-                  "fixed": "#000000"
-                },
-                "size": 20,
-                "text": {
-                  "field": "Value",
-                  "fixed": "",
-                  "mode": "field"
-                },
-                "valign": "middle"
-              },
-              "constraint": {
-                "horizontal": "leftright",
-                "vertical": "top"
-              },
-              "links": [],
-              "name": "Element 1",
-              "placement": {
-                "height": 72,
-                "left": 88,
-                "right": 88,
-                "top": 35
-              },
-              "type": "metric-value"
-            }
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
           ],
-          "name": "Element 1755007944049",
-          "placement": {
-            "height": 100,
-            "left": 0,
-            "rotation": 0,
-            "top": 0,
-            "width": 100
-          },
-          "type": "frame"
+          "fields": "",
+          "values": false
         },
-        "showAdvancedTypes": true,
-        "tooltip": {
-          "mode": "single"
-        },
-        "zoomToContent": false
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
       },
       "pluginVersion": "12.2.0-16711121739",
       "targets": [
@@ -1870,16 +369,46 @@
             "uid": "${ds_samm_prometheus}"
           },
           "editorMode": "code",
-          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  )",
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
+          "exemplar": false,
+          "expr": "count ((1-(xen_host_memory_free_kib/xen_host_memory_total_kib)) > 0.90 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ((1-(xen_host_memory_free_kib/xen_host_memory_total_kib)) > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ((1-(xen_host_memory_free_kib/xen_host_memory_total_kib)) > 0 <=0.7 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
         }
       ],
-      "title": "",
+      "title": "💾RAM",
       "transparent": true,
-      "type": "canvas"
+      "type": "stat"
     },
     {
       "datasource": {
@@ -1891,12 +420,860 @@
           "color": {
             "mode": "thresholds"
           },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
             },
-            "inspect": false
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 5,
+        "y": 5
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_read_latency > 5000 )  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_read_latency > 3000 <= 5000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(xen_host_sr_read_latency < 3000 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾SR Read Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 7,
+        "y": 5
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_write_latency > 5000 )  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count(xen_host_sr_write_latency > 3000 <= 5000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(xen_host_sr_write_latency < 3000 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾SR Write Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 1,
+        "x": 9,
+        "y": 5
+      },
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        V<br/>M<br/><br/><br/>I<br/>N<br/>F<br/>O <br/>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 10,
+        "y": 5
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( avg by (name_label) (xen_vm_cpu{name_label!~\"Control domain.*\"}) > 0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( avg by (name_label) (xen_vm_cpu{name_label!~\"Control domain.*\"}) > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( avg by (name_label) (xen_vm_cpu{name_label!~\"Control domain.*\"}) > 0 <=0.7 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "⚡CPU Cores",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 12,
+        "y": 5
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( (1-((xen_vm_memory_internal_free{name_label!~\"Control domain.*\"} * 1024)/(xen_vm_memory))) > 0.90 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( (1-((xen_vm_memory_internal_free{name_label!~\"Control domain.*\"} * 1024)/(xen_vm_memory))) > 0.7 <=0.9 ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( (1-((xen_vm_memory_internal_free{name_label!~\"Control domain.*\"} * 1024)/(xen_vm_memory))) > 0 <= 0.7  ) or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾RAM",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 14,
+        "y": 5
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_read_latency > 1000 )   or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_read_latency > 800 <= 1000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_vbd_read_latency < 800)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾Read Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "warning"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 16,
+        "y": 5
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_write_latency > 1000 )   or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "CRITICAL",
+          "range": false,
+          "refId": "Critical"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " count ( xen_vm_vbd_write_latency > 800 <= 1000)  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "WARNING",
+          "range": false,
+          "refId": "warning"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_vbd_write_latency < 800)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "NORMAL",
+          "range": false,
+          "refId": "ok"
+        }
+      ],
+      "title": "💾Write Latency",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -1916,24 +1293,35 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 3,
-        "y": 31
+        "h": 13,
+        "w": 6,
+        "x": 18,
+        "y": 5
       },
-      "id": 12,
+      "id": 20,
       "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
-        "frameIndex": 3,
-        "showHeader": true
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
       },
       "pluginVersion": "12.2.0-16711121739",
       "targets": [
@@ -1944,37 +1332,376 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": " (clamp(snmp_ns_vserverstats_vsvrhealth{vsvrstate=\"down\"}, 1, 1) or clamp_max(absent(nonexistent{vsvrstate=\"down\"}), 0))",
+          "expr": "xen_host_pool_session_count",
           "instant": true,
-          "legendFormat": "__auto",
+          "legendFormat": "{{name_label}}",
           "range": false,
           "refId": "A"
         }
       ],
-      "title": "New panel",
-      "transformations": [
-        {
-          "id": "labelsToFields",
-          "options": {}
-        },
-        {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true,
-              "Value": true
-            },
-            "includeByName": {},
-            "indexByName": {},
-            "renameByName": {}
+      "title": "Pool Session Count",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
           }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 1,
+        "y": 16
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_host_cpu_avg > 0  )",
+          "instant": true,
+          "legendFormat": "Running Hosts",
+          "range": false,
+          "refId": "A"
         }
       ],
-      "type": "table"
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 5,
+        "y": 16
+      },
+      "id": 24,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(xen_host_sr_read_latency   )",
+          "instant": true,
+          "legendFormat": "Hosts SR",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 10,
+        "y": 16
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_memory{name_label!~\"Control domain.*\"} > 0 )",
+          "instant": true,
+          "legendFormat": "Running Virtual Machines",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 14,
+        "y": 16
+      },
+      "id": 23,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_vm_vbd_read_latency )",
+          "instant": true,
+          "legendFormat": "VM VDisks",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( xen_pool_info > 0)",
+          "instant": true,
+          "legendFormat": "XenServer Pools",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); padding: 16px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);'>\n    <div style='display: flex; justify-content: center; gap: 30px; align-items: center; height: 100%;'>\n        <div style='text-align: center; padding: 15px; background: rgba(58, 130, 197, 0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; min-width: 100px;'>\n            <div style='font-size: 24px; font-weight: bold; color: #ffffff;'>$xen_pool_count</div>\n            <div style='font-size: 12px; color: #cccccc; margin-top: 4px;'>Total Pools</div>\n        </div>\n        <div style='text-align: center; padding: 15px; background: rgba(99, 134, 209, 0.85); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; min-width: 100px;'>\n            <div style='font-size: 24px; font-weight: bold; color: #ffffff;'>$xen_host_count</div>\n            <div style='font-size: 12px; color: #cccccc; margin-top: 4px;'>Total Hosts</div>\n        </div>\n        <div style='text-align: center; padding: 15px; background: rgba(87, 175, 202, 0.885); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; min-width: 100px;'>\n            <div style='font-size: 24px; font-weight: bold; color: #ffffff;'> $xen_vm_count</div>\n            <div style='font-size: 12px; color: #cccccc; margin-top: 4px;'>Total VMs</div>\n        </div>\n    </div>\n</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "Summary Statistics",
+      "transparent": true,
+      "type": "text"
     }
   ],
   "preload": false,
@@ -1982,19 +1709,6 @@
   "tags": [],
   "templating": {
     "list": [
-      {
-        "current": {
-          "text": "samm-prometheus",
-          "value": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
-        },
-        "hide": 2,
-        "name": "ds_samm_prometheus",
-        "options": [],
-        "query": "prometheus",
-        "refresh": 1,
-        "regex": "/^samm-prometheus/",
-        "type": "datasource"
-      },
       {
         "current": {
           "text": "https://samm.pr.mmmhc.com/grafana",
@@ -2033,42 +1747,98 @@
       },
       {
         "current": {
-          "text": "ASSIGNED Dev InnovaMD_",
-          "value": "ASSIGNED Dev InnovaMD_"
+          "text": "samm-prometheus",
+          "value": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "hide": 2,
+        "name": "ds_samm_prometheus",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/^samm-prometheus/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "95",
+          "value": "95"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "${ds_samm_prometheus}"
         },
-        "definition": "label_values(ctx_machine_isinmaintenancemode,desktopgroup_name)",
+        "definition": "query_result(count ( xen_host_cpu_avg >= 0))",
         "hide": 2,
-        "includeAll": true,
-        "name": "vda_desktopgroup",
+        "name": "xen_host_count",
         "options": [],
         "query": {
-          "qryType": 1,
-          "query": "label_values(ctx_machine_isinmaintenancemode,desktopgroup_name)",
+          "qryType": 3,
+          "query": "query_result(count ( xen_host_cpu_avg >= 0))",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "",
+        "regex": "/.*{} (?<value>.*) .*/",
         "type": "query"
       },
       {
         "current": {
-          "text": "CVAD Overall Dashboard",
-          "value": "CVAD Overall Dashboard"
+          "text": "6",
+          "value": "6"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(count ( xen_pool_info))",
+        "hide": 2,
+        "name": "xen_pool_count",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(count ( xen_pool_info))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*{} (?<value>.*) .*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "2468",
+          "value": "2468"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "query_result(count ( xen_vm_info))",
+        "hide": 2,
+        "name": "xen_vm_count",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result(count ( xen_vm_info))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*{} (?<value>.*) .*/",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "Overall Dashboard",
+          "value": "Overall Dashboard"
         },
         "hide": 2,
         "name": "dashboard_title",
         "options": [
           {
             "selected": true,
-            "text": "CVAD Overall Dashboard",
-            "value": "CVAD Overall Dashboard"
+            "text": "Overall Dashboard",
+            "value": "Overall Dashboard"
           }
         ],
-        "query": "CVAD Overall Dashboard",
+        "query": "Overall Dashboard",
         "type": "textbox"
       },
       {
@@ -2076,6 +1846,7 @@
           "text": "Comprehensive System Monitoring & Management",
           "value": "Comprehensive System Monitoring & Management"
         },
+        "description": "",
         "hide": 2,
         "name": "dashboard_subtitle",
         "options": [
@@ -2091,12 +1862,12 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "cvad-overall-dashboard-dev",
-  "uid": "3ea9c41b-a112-4cc8-a182-17bc14bbf442",
-  "version": 33
+  "title": "overall-dashboard-dev",
+  "uid": "overall-dashboard-dev",
+  "version": 3
 }
