@@ -1,0 +1,1712 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 98,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 15,
+      "libraryPanel": {
+        "name": "Dashboard Header",
+        "uid": "bev3km84zcmiod"
+      },
+      "title": "",
+      "type": "library-panel-ref"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 1,
+        "x": 0,
+        "y": 4
+      },
+      "id": 18,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        C<br/>O<br/>N<br/>T<br/>R<br/>O<br/>L</br>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "Show Details",
+              "url": "/d/1ef32c05-48af-42fa-9ed5-841a25110d0c/machine-overview-by-layer?orgId=1&var-layer=${__field.labels.layer}&${cpu_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Netscaler"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "",
+                    "url": "/d/d328e5a7-7275-47dd-9923-d974226944f5/netscaler-overview?orgId=1&${cpu_threshold:queryparam}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 1,
+        "y": 4
+      },
+      "id": 8,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count by (layer) ((rate(cim_perfcpu_percentidletime{name=\"_Total\",layer!=\"resource\"}[$__rate_interval]) / rate(cim_perfcpu_timestamp_sys100ns[$__rate_interval]) < (1-$cpu_threshold/100)) )",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Windows"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count (snmp_ns_stats_rescpuusage > $cpu_threshold)",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "netscalers",
+          "range": false,
+          "refId": "Netscaler"
+        }
+      ],
+      "title": "Alerted by CPU",
+      "type": "bargauge"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 1,
+        "x": 8,
+        "y": 4
+      },
+      "id": 16,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        V<br/>D<br/>A<br/>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "Show Details",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&${cpu_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 9,
+        "y": 4
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) (((1 - rate(cim_perfcpu_percentidletime{name=\"_Total\"}[$__rate_interval]) / rate(cim_perfcpu_timestamp_sys100ns[$__rate_interval]))*100 > $cpu_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"2\"} * 0), \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by CPU - VDA",
+      "type": "bargauge"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 1,
+        "x": 16,
+        "y": 4
+      },
+      "id": 17,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        V<br/>D<br/>I<br/>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "Show Details",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&${cpu_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 11
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 17,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) (((1 - rate(cim_perfcpu_percentidletime{name=\"_Total\"}[$__rate_interval]) / rate(cim_perfcpu_timestamp_sys100ns [$__rate_interval]))*100 > $cpu_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"1\"} * 0), \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by CPU - VDI",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.layer}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/1ef32c05-48af-42fa-9ed5-841a25110d0c/machine-overview-by-layer?orgId=1&var-layer=${__field.labels.layer}&${ram_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Netscaler"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "",
+                    "url": "/d/d328e5a7-7275-47dd-9923-d974226944f5/netscaler-overview?orgId=1&${ram_threshold:queryparam}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 1,
+        "y": 7
+      },
+      "id": 9,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (layer) (((cim_os_freephysicalmemory{layer!=\"resource\"} / cim_os_totalvisiblememorysize) < (1-$ram_threshold/100)) ))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Windows"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(snmp_ns_stats_resmemusage > $ram_threshold)",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "netscaler",
+          "range": false,
+          "refId": "Netscaler"
+        }
+      ],
+      "title": "Alerted RAM",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&${disk_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 9,
+        "y": 9
+      },
+      "id": 5,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) (((1-(cim_disk_freespace{drivetype=\"3\"} / cim_disk_size))*100 > $disk_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"2\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by Disk - VDA",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&${disk_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 17,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) (((1-(cim_disk_freespace{drivetype=\"3\"} / cim_disk_size))*100 > $disk_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname)(ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"1\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by Disk - VDI",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.layer}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/1ef32c05-48af-42fa-9ed5-841a25110d0c/machine-overview-by-layer?orgId=1&var-layer=${__field.labels.layer}&${disk_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Netscaler"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "",
+                    "url": "/d/d328e5a7-7275-47dd-9923-d974226944f5/netscaler-overview?orgId=1&${disk_threshold:queryparam}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 1,
+        "y": 10
+      },
+      "id": 10,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (layer) ( max by (instance,layer) ((cim_disk_freespace{drivetype=\"3\",layer!=\"resource\"} / cim_disk_size) < (1-$disk_threshold/100)) ))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "Windows"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count (snmp_nsdisk_syshealthdiskperusage > $disk_threshold)",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "netscaler",
+          "range": false,
+          "refId": "Netscaler"
+        }
+      ],
+      "title": "Alerted by Disk",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.layer}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/1ef32c05-48af-42fa-9ed5-841a25110d0c/machine-overview-by-layer?orgId=1&var-layer=${__field.labels.layer}&${uptime_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 1,
+        "y": 13
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count by (layer) (time() - cim_os_lastbootuptime{layer!=\"resource\"} > $uptime_threshold)",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime > 1 month",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&${ram_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 9,
+        "y": 14
+      },
+      "id": 7,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) (((1-(cim_os_freephysicalmemory / cim_os_totalvisiblememorysize))*100 > $ram_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"2\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by RAM - VDA",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&${ram_threshold:queryparam}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 11
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 17,
+        "y": 14
+      },
+      "id": 3,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) (((1-(cim_os_freephysicalmemory / cim_os_totalvisiblememorysize))*100 > $ram_threshold) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"1\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by RAM - VDI",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.layer}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/1ef32c05-48af-42fa-9ed5-841a25110d0c/machine-overview-by-layer?orgId=1&var-layer=${__field.labels.layer}&var-cert_expire_days=90"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Netscaler"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "",
+                    "url": "/d/d328e5a7-7275-47dd-9923-d974226944f5/netscaler-overview?orgId=1&var-cert_expire_days=90"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 1,
+        "y": 16
+      },
+      "id": 13,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count by (layer) (min by (fqdn,layer) (cim_certificates_ssldaystoexpire{layer!=\"resource\"}) < $cert_expire_days)",
+          "format": "time_series",
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "{{label_name}}",
+          "range": false,
+          "refId": "Windows"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count (snmp_nscertkey_ssldaystoexpire < $cert_expire_days)",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "netscalers",
+          "range": false,
+          "refId": "Netscaler"
+        }
+      ],
+      "title": "Certs < 90 days",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview-by-desktopgroup?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&var-uptime_threshold=172800"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 9,
+        "y": 18
+      },
+      "id": 12,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) ((time() - cim_os_lastbootuptime > 172800) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"2\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by Uptime > 2 days - VDA",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview-by-desktopgroup?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&var-uptime_threshold=172800"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 17,
+        "y": 18
+      },
+      "id": 19,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) ((time() - cim_os_lastbootuptime > 172800) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"1\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by Uptime > 2 days - VDI",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/f3221ee0-3f5b-4ff6-b5b9-209a256cb19e/citrix-failures?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 1,
+        "y": 19
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "dataset": "CitrixMMMLogging",
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  dg.Name, COUNT(*)\r\nFROM\r\n  CitrixMMMMonitoring.MonitorData.Machine m,\r\n  CitrixMMMMonitoring.MonitorData.DesktopGroup dg\r\nWHERE\r\n  (\r\n    CurrentRegistrationState = 2\r\n    AND CurrentPowerState = 3\r\n    AND m.IsInMaintenanceMode = 0\r\n    AND DesktopGroupId IS NOT NULL\r\n    AND dg.id = m.DesktopGroupId\r\n    AND DateDiff(hour, LastDeregisteredDate, getdate()) > 1\r\n  )\r\nGROUP BY (dg.Name)",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Unregistered",
+      "type": "bargauge"
+    }
+  ],
+  "preload": false,
+  "refresh": "1m",
+  "schemaVersion": 41,
+  "tags": [
+    "CVAD",
+    "Citrix",
+    "CVAD Alerts",
+    "Alerts"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "80",
+          "value": "80"
+        },
+        "label": "CPU Threshold",
+        "name": "cpu_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "80",
+            "value": "80"
+          }
+        ],
+        "query": "80",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "80",
+          "value": "80"
+        },
+        "label": "RAM Threshold",
+        "name": "ram_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "80",
+            "value": "80"
+          }
+        ],
+        "query": "80",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "90",
+          "value": "90"
+        },
+        "label": "Disk Threshold",
+        "name": "disk_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "90",
+            "value": "90"
+          }
+        ],
+        "query": "90",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "90",
+          "value": "90"
+        },
+        "hide": 2,
+        "name": "cert_expire_days",
+        "options": [
+          {
+            "selected": true,
+            "text": "90",
+            "value": "90"
+          }
+        ],
+        "query": "90",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "2592000",
+          "value": "2592000"
+        },
+        "hide": 2,
+        "name": "uptime_threshold",
+        "options": [
+          {
+            "selected": true,
+            "text": "2592000",
+            "value": "2592000"
+          }
+        ],
+        "query": "2592000",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "citrix-monitor",
+          "value": "PAF719D936019406A"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "name": "datasource",
+        "options": [],
+        "query": "mssql",
+        "refresh": 1,
+        "regex": "/^citrix-monitor/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "Alerts Panel",
+          "value": "Alerts Panel"
+        },
+        "hide": 2,
+        "name": "dashboard_title",
+        "options": [
+          {
+            "selected": true,
+            "text": "Alerts Panel",
+            "value": "Alerts Panel"
+          }
+        ],
+        "query": "Alerts Panel",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Comprehensive System Monitoring & Management",
+          "value": "Comprehensive System Monitoring & Management"
+        },
+        "hide": 2,
+        "name": "dashboard_subtitle",
+        "options": [
+          {
+            "selected": true,
+            "text": "Comprehensive System Monitoring & Management",
+            "value": "Comprehensive System Monitoring & Management"
+          }
+        ],
+        "query": "Comprehensive System Monitoring & Management",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "cvad-alerts-dev",
+  "uid": "cvad-alerts-dev",
+  "version": 2
+}

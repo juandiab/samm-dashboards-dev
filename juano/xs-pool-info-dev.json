@@ -17,19 +17,35 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 62,
-  "links": [],
+  "graphTooltip": 1,
+  "id": 63,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "PoolInfo",
+        "XenServer"
+      ],
+      "targetBlank": true,
+      "title": "Pool Overview",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://samm.pr.mmmhc.com:3000/d/xs-pool-info-overall/xs-pool-info-overall?orgId=1&var-xen_pool_uuid=${xen_pool_uuid}"
+    }
+  ],
   "liveNow": true,
   "panels": [
     {
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 17,
+      "id": 26,
       "libraryPanel": {
         "name": "Dashboard Header",
         "uid": "bev3km84zcmiod"
@@ -49,8 +65,9 @@
           },
           "links": [
             {
+              "targetBlank": false,
               "title": "XS Pool Info",
-              "url": "/d/xs-pool-info-dev/xs-pool-info-dev?orgId=1&var-xen_pool_uuid=${__field.labels.uuid}"
+              "url": "/d/xs-pool-info-overall-dev/xs-pool-info-overall??orgId=1&var-xen_pool_uuid=${__field.labels.uuid}"
             }
           ],
           "mappings": [],
@@ -58,10 +75,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-blue"
+                "color": "#5794f2",
+                "value": 0
               },
               {
-                "color": "red",
+                "color": "#e02f44",
                 "value": 80
               }
             ]
@@ -70,15 +88,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
-        "w": 24,
+        "h": 10,
+        "w": 4,
         "x": 0,
-        "y": 5
+        "y": 4
       },
-      "id": 12,
-      "maxPerRow": 4,
+      "id": 10,
       "options": {
-        "colorMode": "background",
+        "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
@@ -94,9 +111,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
-      "repeat": "xen_pool_uuid",
-      "repeatDirection": "h",
+      "pluginVersion": "12.2.0-16711121739",
       "targets": [
         {
           "datasource": {
@@ -117,7 +132,8 @@
           "useBackend": false
         }
       ],
-      "title": "$xen_pool_uuid",
+      "title": "",
+      "transparent": true,
       "type": "stat"
     },
     {
@@ -152,10 +168,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "blue",
+                "value": 0
               },
               {
-                "color": "red",
+                "color": "#e02f44",
                 "value": 80
               }
             ]
@@ -165,12 +182,11 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 9
+        "w": 20,
+        "x": 4,
+        "y": 4
       },
       "id": 4,
-      "maxPerRow": 4,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -187,14 +203,12 @@
         "showPercentChange": false,
         "text": {
           "titleSize": 12,
-          "valueSize": 24
+          "valueSize": 20
         },
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "12.0.2",
-      "repeat": "xen_pool_uuid",
-      "repeatDirection": "h",
+      "pluginVersion": "12.2.0-16711121739",
       "targets": [
         {
           "datasource": {
@@ -209,7 +223,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": true,
-          "legendFormat": "{{name_label}}",
+          "legendFormat": "{{host_name_label}}",
           "range": false,
           "refId": "A",
           "useBackend": false
@@ -219,6 +233,32 @@
       "type": "stat"
     },
     {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 4,
+        "x": 0,
+        "y": 14
+      },
+      "id": 25,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); padding: 16px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);'>\r\n\t<div style='display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; height: 100%;'>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Pool Name</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px;'>${xen_pool_name}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Total Hosts</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; padding: 3px 10px; background: rgba(115, 191, 105, 0.2); border-radius: 6px; border: 1px solid rgba(115, 191, 105, 0.3);'>${total_hosts}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Pool UUID</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${xen_pool_uuid}</span>\r\n\t\t</div>\r\n\r\n\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Pool Status</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; padding: 3px 10px; background: rgba(115, 191, 105, 0.2); border-radius: 6px; border: 1px solid rgba(115, 191, 105, 0.3);'>Healthy</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Instance</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${xen_host_instance}</span>\r\n\t\t</div>\r\n\t</div>\r\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "${ds_samm_prometheus}"
@@ -228,12 +268,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "links": [
-            {
-              "title": "Go to the Host",
-              "url": "/d/xs-host-info-dev/xs-host-info-dev?orgId=1&var-xen_host_uuid=${__field.labels.uuid} "
-            }
-          ],
+          "decimals": 1,
           "mappings": [],
           "max": 1,
           "min": 0,
@@ -241,16 +276,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#73bf69",
                 "value": 0
               },
               {
-                "color": "#EAB839",
-                "value": 0.85
+                "color": "#f59e0b",
+                "value": 0.5
               },
               {
-                "color": "red",
-                "value": 0.95
+                "color": "#e02f44",
+                "value": 0.8
               }
             ]
           },
@@ -259,12 +294,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 13,
-        "w": 7,
-        "x": 0,
-        "y": 19
+        "h": 16,
+        "w": 5,
+        "x": 4,
+        "y": 14
       },
-      "id": 13,
+      "id": 8,
       "options": {
         "displayMode": "lcd",
         "legend": {
@@ -276,7 +311,7 @@
         "maxVizHeight": 16,
         "minVizHeight": 16,
         "minVizWidth": 8,
-        "namePlacement": "auto",
+        "namePlacement": "left",
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -289,7 +324,7 @@
         "sizing": "manual",
         "text": {
           "titleSize": 12,
-          "valueSize": 12
+          "valueSize": 10
         },
         "valueMode": "color"
       },
@@ -301,8 +336,8 @@
             "uid": "${ds_samm_prometheus}"
           },
           "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "(1- (xen_host_memory_free_kib / xen_host_memory_total_kib))>($memory_threshold/100)",
+          "editorMode": "builder",
+          "expr": "xen_host_hostload{instance=\"$xen_host_instance\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -312,7 +347,8 @@
           "useBackend": false
         }
       ],
-      "title": "Hosts with allocated RAM > $memory_threshold%",
+      "title": "Host AVG Load",
+      "transparent": true,
       "type": "bargauge"
     },
     {
@@ -325,10 +361,196 @@
           "color": {
             "mode": "thresholds"
           },
+          "decimals": 1,
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69",
+                "value": 0
+              },
+              {
+                "color": "#f59e0b",
+                "value": 0.5
+              },
+              {
+                "color": "#e02f44",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 5,
+        "x": 9,
+        "y": 14
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 16,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "titleSize": 12,
+          "valueSize": 10
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "xen_host_cpu_avg{instance=\"$xen_host_instance\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{name_label}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Host AVG CPU",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#73bf69",
+                "value": 0
+              },
+              {
+                "color": "#f59e0b",
+                "value": 0.75
+              },
+              {
+                "color": "#e02f44",
+                "value": 0.9
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 5,
+        "x": 14,
+        "y": 14
+      },
+      "id": 9,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 16,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "titleSize": 12,
+          "valueSize": 10
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "1-xen_host_memory_free_kib{instance=\"$xen_host_instance\"} / xen_host_memory_total_kib{instance=\"$xen_host_instance\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{name_label}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Host RAM Load",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "links": [
             {
-              "title": "Go to the Host",
-              "url": "/d/xs-vm-info-dev/vm-info-dev?&var-xen_host_uuid=${__field.labels.uuid} "
+              "title": "Show details",
+              "url": "/d/xs-host-info-dev/xs-host-info-dev?orgId=1&var-xen_host_uuid=${__field.labels.uuid}"
             }
           ],
           "mappings": [],
@@ -338,16 +560,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#73bf69",
                 "value": 0
               },
               {
-                "color": "#EAB839",
+                "color": "#f59e0b",
                 "value": 0.8
               },
               {
-                "color": "red",
-                "value": 0.95
+                "color": "#e02f44",
+                "value": 0.9
               }
             ]
           },
@@ -356,207 +578,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 14,
-        "w": 6,
-        "x": 7,
-        "y": 19
-      },
-      "id": 16,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 16,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "manual",
-        "text": {
-          "titleSize": 12,
-          "valueSize": 12
-        },
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "xen_vm_cpu_usage> ( $cpu_threshold / 100)",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": true,
-          "legendFormat": "{{name_label}}",
-          "range": false,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "VMs with high CPU >  $cpu_threshold %",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "links": [
-            {
-              "title": "Go to the Host",
-              "url": "/d/xs-host-info-dev/xs-host-info-dev?orgId=1&var-xen_host_uuid=${__field.labels.uuid} "
-            }
-          ],
-          "mappings": [],
-          "max": 10000,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "#EAB839",
-                "value": 8000
-              },
-              {
-                "color": "red",
-                "value": 9000
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 6,
-        "x": 13,
-        "y": 19
-      },
-      "id": 14,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 16,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "manual",
-        "text": {
-          "titleSize": 12,
-          "valueSize": 12
-        },
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "xen_host_sr_write_latency> (  $disklatency_threshold * 1000)",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{name_label}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Hosts with high write latency > $disklatency_threshold seconds",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "links": [
-            {
-              "title": "Go to the Host",
-              "url": "/d/xs-host-info-dev/xs-host-info-dev?orgId=1&var-xen_host_uuid=${__field.labels.uuid} "
-            }
-          ],
-          "mappings": [],
-          "max": 10000,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "#EAB839",
-                "value": 8000
-              },
-              {
-                "color": "red",
-                "value": 9000
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 14,
+        "h": 17,
         "w": 5,
         "x": 19,
-        "y": 19
+        "y": 14
       },
-      "id": 15,
+      "id": 12,
       "options": {
         "displayMode": "lcd",
         "legend": {
@@ -568,7 +595,7 @@
         "maxVizHeight": 16,
         "minVizHeight": 16,
         "minVizWidth": 8,
-        "namePlacement": "auto",
+        "namePlacement": "left",
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -581,7 +608,7 @@
         "sizing": "manual",
         "text": {
           "titleSize": 12,
-          "valueSize": 12
+          "valueSize": 10
         },
         "valueMode": "color"
       },
@@ -590,27 +617,28 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
           },
-          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "xen_host_sr_read_latency> ( $disklatency_threshold * 1000 )",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
+          "expr": "(1-(xen_host_memory_free_kib{instance=\"$xen_host_instance\"}/xen_host_memory_total_kib{instance=\"$xen_host_instance\"}))>0.8",
           "instant": false,
           "legendFormat": "{{name_label}}",
           "range": true,
-          "refId": "A",
-          "useBackend": false
+          "refId": "A"
         }
       ],
-      "title": "Hosts with high read latency >  $disklatency_threshold seconds",
+      "title": "Hosts with RAM utilization over 80%",
+      "transparent": true,
       "type": "bargauge"
     }
   ],
   "preload": false,
+  "refresh": "5s",
   "schemaVersion": 41,
-  "tags": [],
+  "tags": [
+    "XenServer",
+    "Pool"
+  ],
   "templating": {
     "list": [
       {
@@ -618,7 +646,6 @@
           "text": "samm-prometheus",
           "value": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
         },
-        "description": "",
         "hide": 2,
         "name": "ds_samm_prometheus",
         "options": [],
@@ -629,12 +656,8 @@
       },
       {
         "current": {
-          "text": [
-            "Pool VDI 01"
-          ],
-          "value": [
-            "f47ed948-df7e-54c1-2626-f0cdaad37f78"
-          ]
+          "text": "Pool VDI 01",
+          "value": "f47ed948-df7e-54c1-2626-f0cdaad37f78"
         },
         "datasource": {
           "type": "prometheus",
@@ -643,7 +666,6 @@
         "definition": "query_result(xen_pool_info)",
         "includeAll": false,
         "label": "XEN_POOL_UUID",
-        "multi": true,
         "name": "xen_pool_uuid",
         "options": [],
         "query": {
@@ -665,7 +687,7 @@
           "type": "prometheus",
           "uid": "${ds_samm_prometheus}"
         },
-        "definition": "label_values(xen_host_info{pool_uuid=\"$xen_pool_uuid\"},name_label)",
+        "definition": "label_values({pool_uuid=\"$xen_pool_uuid\"},name_label)",
         "hide": 2,
         "includeAll": false,
         "label": "Host UUID",
@@ -673,7 +695,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(xen_host_info{pool_uuid=\"$xen_pool_uuid\"},name_label)",
+          "query": "label_values({pool_uuid=\"$xen_pool_uuid\"},name_label)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -689,7 +711,7 @@
           "type": "prometheus",
           "uid": "${ds_samm_prometheus}"
         },
-        "definition": "label_values(xen_host_info{pool_uuid=\"$xen_pool_uuid\"},instance)",
+        "definition": "label_values({pool_uuid=\"$xen_pool_uuid\"},instance)",
         "hide": 2,
         "includeAll": false,
         "label": "Host Instance IP",
@@ -697,30 +719,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(xen_host_info{pool_uuid=\"$xen_pool_uuid\"},instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "",
-          "value": ""
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},name_label)",
-        "hide": 2,
-        "label": "xen_host_hostname",
-        "name": "xen_host_hostname",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},name_label)",
+          "query": "label_values({pool_uuid=\"$xen_pool_uuid\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -790,56 +789,49 @@
       },
       {
         "current": {
-          "text": "80",
-          "value": "80"
+          "text": "Pool VDI 01",
+          "value": "Pool VDI 01"
         },
-        "label": "Memory",
-        "name": "memory_threshold",
-        "options": [
-          {
-            "selected": true,
-            "text": "80",
-            "value": "80"
-          }
-        ],
-        "query": "80",
-        "type": "textbox"
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${ds_samm_prometheus}"
+        },
+        "definition": "label_values(xen_pool_info{uuid=\"$xen_pool_uuid\"},name_label)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "xen_pool_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(xen_pool_info{uuid=\"$xen_pool_uuid\"},name_label)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
       },
       {
         "current": {
-          "text": "80",
-          "value": "80"
+          "text": "29",
+          "value": "29"
         },
-        "description": "",
-        "label": "CPU",
-        "name": "cpu_threshold",
-        "options": [
-          {
-            "selected": true,
-            "text": "80",
-            "value": "80"
-          }
-        ],
-        "query": "80",
-        "type": "textbox"
-      },
-      {
-        "current": {
-          "text": "8",
-          "value": "8"
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
         },
-        "description": "",
-        "label": "Disk Latency Threshold (seconds)",
-        "name": "disklatency_threshold",
-        "options": [
-          {
-            "selected": true,
-            "text": "8",
-            "value": "8"
-          }
-        ],
-        "query": "8",
-        "type": "textbox"
+        "definition": "query_result( count(xen_host_info{pool_uuid=\"$xen_pool_uuid\"}))",
+        "hide": 2,
+        "includeAll": false,
+        "name": "total_hosts",
+        "options": [],
+        "query": {
+          "qryType": 3,
+          "query": "query_result( count(xen_host_info{pool_uuid=\"$xen_pool_uuid\"}))",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*?\\s+(\\d+)\\s+.*/",
+        "type": "query"
       },
       {
         "current": {
@@ -860,18 +852,19 @@
       },
       {
         "current": {
-          "text": "XenServer Overall Pool Information",
-          "value": "XenServer Overall Pool Information"
+          "text": "XenServer Pool Information",
+          "value": "XenServer Pool Information"
         },
+        "hide": 2,
         "name": "dashboard_title",
         "options": [
           {
             "selected": true,
-            "text": "XenServer Overall Pool Information",
-            "value": "XenServer Overall Pool Information"
+            "text": "XenServer Pool Information",
+            "value": "XenServer Pool Information"
           }
         ],
-        "query": "XenServer Overall Pool Information",
+        "query": "XenServer Pool Information",
         "type": "textbox"
       }
     ]
@@ -882,7 +875,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-pool-info-overall-dev",
-  "uid": "xs-pool-info-overall-dev",
+  "title": "xs-pool-info-dev",
+  "uid": "xs-pool-info-dev",
   "version": 8
 }

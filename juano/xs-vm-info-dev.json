@@ -48,7 +48,7 @@
   "panels": [
     {
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 0
@@ -106,7 +106,7 @@
         "h": 2,
         "w": 12,
         "x": 0,
-        "y": 5
+        "y": 4
       },
       "id": 22,
       "options": {
@@ -190,7 +190,7 @@
         "h": 8,
         "w": 3,
         "x": 12,
-        "y": 5
+        "y": 4
       },
       "id": 13,
       "options": {
@@ -311,7 +311,7 @@
         "h": 11,
         "w": 9,
         "x": 15,
-        "y": 5
+        "y": 4
       },
       "id": 20,
       "options": {
@@ -400,7 +400,7 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 7
+        "y": 6
       },
       "id": 23,
       "options": {
@@ -453,7 +453,7 @@
         "h": 11,
         "w": 9,
         "x": 3,
-        "y": 7
+        "y": 6
       },
       "id": 11,
       "options": {
@@ -521,7 +521,7 @@
         "h": 8,
         "w": 3,
         "x": 0,
-        "y": 9
+        "y": 8
       },
       "id": 24,
       "options": {
@@ -599,7 +599,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 13
+        "y": 12
       },
       "id": 15,
       "options": {
@@ -681,7 +681,7 @@
         "h": 2,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 15
       },
       "id": 5,
       "options": {
@@ -797,7 +797,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 18
+        "y": 17
       },
       "id": 18,
       "options": {
@@ -913,7 +913,7 @@
         "h": 8,
         "w": 8,
         "x": 7,
-        "y": 18
+        "y": 17
       },
       "id": 14,
       "options": {
@@ -1044,7 +1044,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 18
+        "y": 17
       },
       "id": 19,
       "options": {
@@ -1143,7 +1143,7 @@
         "h": 3,
         "w": 8,
         "x": 7,
-        "y": 26
+        "y": 25
       },
       "id": 4,
       "options": {
@@ -1249,7 +1249,7 @@
         "h": 3,
         "w": 9,
         "x": 15,
-        "y": 26
+        "y": 25
       },
       "id": 1,
       "options": {
@@ -1308,7 +1308,8 @@
   "schemaVersion": 41,
   "tags": [
     "VMInfo",
-    "XenServer"
+    "XenServer",
+    "VM"
   ],
   "templating": {
     "list": [
@@ -1426,8 +1427,8 @@
       },
       {
         "current": {
-          "text": "{guest_metrics=\"5b57fa31-1989-9477-7df6-b65eeb9c61f3\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Running\",resident_on=\"6268e515-3181-4fcf-b4d8-fc99d405077a\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1755279155000",
-          "value": "{guest_metrics=\"5b57fa31-1989-9477-7df6-b65eeb9c61f3\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Running\",resident_on=\"6268e515-3181-4fcf-b4d8-fc99d405077a\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1755279155000"
+          "text": "{guest_metrics=\"5b57fa31-1989-9477-7df6-b65eeb9c61f3\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Running\",resident_on=\"6268e515-3181-4fcf-b4d8-fc99d405077a\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1756239336000",
+          "value": "{guest_metrics=\"5b57fa31-1989-9477-7df6-b65eeb9c61f3\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Running\",resident_on=\"6268e515-3181-4fcf-b4d8-fc99d405077a\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1756239336000"
         },
         "datasource": {
           "type": "prometheus",
@@ -1573,8 +1574,8 @@
       },
       {
         "current": {
-          "text": "cim_os_lastbootuptime{caption=\"Microsoft Windows 10 Enterprise N\",dn=\"cn=xs10mainpvs0027,ou=mainpvs,ou=pooled vdesktops,ou=production 1912,ou=citrix,ou=technologies,ou=security principals,dc=pr,dc=mmmhc,dc=com\",fqdn=\"xs10mainpvs0027.pr.mmmhc.com\",instance=\"xs10mainpvs0027\",job=\"samm-xs10mainpvs\",layer=\"resource\",osarchitecture=\"64-bit\",role=\"cvad_vdi\",status=\"OK\"} 1755208040 1755279155000",
-          "value": "cim_os_lastbootuptime{caption=\"Microsoft Windows 10 Enterprise N\",dn=\"cn=xs10mainpvs0027,ou=mainpvs,ou=pooled vdesktops,ou=production 1912,ou=citrix,ou=technologies,ou=security principals,dc=pr,dc=mmmhc,dc=com\",fqdn=\"xs10mainpvs0027.pr.mmmhc.com\",instance=\"xs10mainpvs0027\",job=\"samm-xs10mainpvs\",layer=\"resource\",osarchitecture=\"64-bit\",role=\"cvad_vdi\",status=\"OK\"} 1755208040 1755279155000"
+          "text": "cim_os_lastbootuptime{caption=\"Microsoft Windows 10 Enterprise N\",dn=\"cn=xs10mainpvs0027,ou=mainpvs,ou=pooled vdesktops,ou=production 1912,ou=citrix,ou=technologies,ou=security principals,dc=pr,dc=mmmhc,dc=com\",fqdn=\"xs10mainpvs0027.pr.mmmhc.com\",instance=\"xs10mainpvs0027\",job=\"samm-xs10mainpvs\",layer=\"resource\",osarchitecture=\"64-bit\",role=\"cvad_vdi\",status=\"OK\"} 1756188196 1756239336000",
+          "value": "cim_os_lastbootuptime{caption=\"Microsoft Windows 10 Enterprise N\",dn=\"cn=xs10mainpvs0027,ou=mainpvs,ou=pooled vdesktops,ou=production 1912,ou=citrix,ou=technologies,ou=security principals,dc=pr,dc=mmmhc,dc=com\",fqdn=\"xs10mainpvs0027.pr.mmmhc.com\",instance=\"xs10mainpvs0027\",job=\"samm-xs10mainpvs\",layer=\"resource\",osarchitecture=\"64-bit\",role=\"cvad_vdi\",status=\"OK\"} 1756188196 1756239336000"
         },
         "datasource": {
           "type": "prometheus",
@@ -1837,5 +1838,5 @@
   "timezone": "browser",
   "title": "xs-vm-info-dev",
   "uid": "xs-vm-info-dev",
-  "version": 8
+  "version": 11
 }

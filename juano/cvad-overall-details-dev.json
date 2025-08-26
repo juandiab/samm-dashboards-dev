@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 64,
+  "id": 90,
   "links": [],
   "panels": [
     {
@@ -49,12 +49,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 28,
+      "id": 13,
       "options": {
         "SVGBaseFix": true,
         "add100Percentage": true,
@@ -117,35 +117,101 @@
           "color": {
             "mode": "thresholds"
           },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-overall-details-dev/cvad-overall-details-dev?"
+            }
+          ],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5794f2",
+                "color": "green",
                 "value": 0
-              },
-              {
-                "color": "#e02f44",
-                "value": 80
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "unit"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "E"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "F"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 2,
-        "w": 12,
+        "h": 4,
+        "w": 7,
         "x": 0,
-        "y": 5
+        "y": 4
       },
-      "id": 7,
+      "id": 2,
       "options": {
         "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
@@ -155,7 +221,10 @@
           "values": false
         },
         "showPercentChange": false,
-        "textMode": "name",
+        "text": {
+          "valueSize": 40
+        },
+        "textMode": "auto",
         "wideLayout": true
       },
       "pluginVersion": "12.2.0-16711121739",
@@ -165,20 +234,86 @@
             "type": "prometheus",
             "uid": "${ds_samm_prometheus}"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "xen_host_info{uuid=\"$xen_host_uuid\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{name_label}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"}  )",
+          "instant": true,
+          "legendFormat": "Total",
+          "range": false,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} == 0)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "available",
+          "range": false,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"2\"} > 0) ",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "In Use",
+          "range": false,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} == 1) ",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Registered",
+          "range": false,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"2\"} == 1) ",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "In Maintenance",
+          "range": false,
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} != 1)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Unregistered",
+          "range": false,
+          "refId": "E"
         }
       ],
-      "title": "",
-      "transparent": true,
+      "title": "VDA (Single Session VMs)",
       "type": "stat"
     },
     {
@@ -191,445 +326,101 @@
           "color": {
             "mode": "thresholds"
           },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-overall-dashboard-dev/cvad-overall-dashboard-dev?orgId=1"
+            }
+          ],
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#73bf69",
+                "color": "green",
                 "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "unit"
               },
               {
-                "color": "#f59e0b",
-                "value": 0.6
-              },
-              {
-                "color": "#e02f44",
-                "value": 0.8
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": 0
+                    }
+                  ]
+                }
               }
             ]
           },
-          "unit": "percentunit"
-        },
-        "overrides": []
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "E"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "F"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 5,
-        "w": 1,
-        "x": 12,
-        "y": 5
+        "h": 4,
+        "w": 7,
+        "x": 7,
+        "y": 4
       },
       "id": 1,
       "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 16,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "manual",
-        "text": {
-          "titleSize": 12,
-          "valueSize": 11
-        },
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "xen_host_cpu_avg{uuid=\"$xen_host_uuid\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "CPU",
-      "transparent": true,
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#f59e0b",
-                "value": 0.6
-              },
-              {
-                "color": "#e02f44",
-                "value": 0.8
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 1,
-        "x": 13,
-        "y": 5
-      },
-      "id": 15,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 16,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "manual",
-        "text": {
-          "titleSize": 12,
-          "valueSize": 11
-        },
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "1-(xen_host_memory_free_kib{uuid=\"$xen_host_uuid\"}/xen_host_memory_total_kib{uuid=\"$xen_host_uuid\"})",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "RAM",
-      "transparent": true,
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "dashed"
-            }
-          },
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#f59e0b",
-                "value": 0.8
-              },
-              {
-                "color": "#e02f44",
-                "value": 0.9
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 14,
-        "y": 5
-      },
-      "id": 5,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "xen_host_cpu_avg{uuid=\"$xen_host_uuid\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{name_label}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "CPU",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "dashed"
-            }
-          },
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#f59e0b",
-                "value": 0.8
-              },
-              {
-                "color": "#e02f44",
-                "value": 0.9
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 18,
-        "y": 5
-      },
-      "id": 27,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "1-(xen_host_memory_free_kib{uuid=\"$xen_host_uuid\"}/xen_host_memory_total_kib{uuid=\"$xen_host_uuid\"})",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{name_label}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "RAM",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 0,
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#f59e0b",
-                "value": 0.5
-              },
-              {
-                "color": "#e02f44",
-                "value": 0.8
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 2,
-        "x": 22,
-        "y": 5
-      },
-      "id": 11,
-      "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
@@ -649,492 +440,93 @@
             "type": "prometheus",
             "uid": "${ds_samm_prometheus}"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "xen_host_hostload{uuid=\"$xen_host_uuid\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Host Load",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "links": [
-            {
-              "title": "XS Pool Info",
-              "url": "/d/xs-pool-info-dev/xs-pool-info-dev?orgId=1&var-xen_pool_uuid=${__field.labels.uuid}"
-            }
-          ],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#5794f2",
-                "value": 0
-              },
-              {
-                "color": "#e02f44",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 3,
-        "x": 0,
-        "y": 7
-      },
-      "id": 10,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "name",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "xen_pool_info{instance=\"$xen_host_instance\"}",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
+          "expr": "count ( ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  )",
           "instant": true,
-          "legendFormat": "{{name_label}}",
+          "legendFormat": "Total",
           "range": false,
-          "refId": "A",
-          "useBackend": false
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"}  == 0) ",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "available",
+          "range": false,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentsessioncount{catalog_sessionsupport=\"1\"}  > 0)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "In Use",
+          "range": false,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"}  == 1) ",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Registered",
+          "range": false,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_isinmaintenancemode{catalog_sessionsupport=\"1\"}  == 1)",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "In Maintenance",
+          "range": false,
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"}  != 1) ",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Unregistered",
+          "range": false,
+          "refId": "E"
         }
       ],
-      "title": "",
-      "transparent": true,
+      "title": "VDI (Multi Session VMs)",
       "type": "stat"
     },
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 9,
-        "x": 3,
-        "y": 7
-      },
-      "id": 25,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style='background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%); padding: 16px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);'>\r\n\t<div style='display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; height: 100%;'>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Address</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${xen_host_address}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Pool</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px;'>${xen_pool_name}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Model</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px;'>${xen_host_model}</span>\r\n\t\t</div>\r\n\t\t<div style='display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid #5794f2;'>\r\n\t\t\t<span style='color: #8e8e8e; font-weight: 600; font-size: 13px;'>Serial Number</span>\r\n\t\t\t<span style='color: #ffffff; font-weight: 500; font-size: 13px; font-family: monospace;'>${xen_host_serial}</span>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n",
-        "mode": "html"
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "${ds_samm_prometheus}"
       },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": true,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "right",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#e02f44",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 12,
-        "y": 10
-      },
-      "id": 18,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "xen_host_sr_read_latency{uuid=\"$xen_host_uuid\"} \r\n    * on (  sr_uuid) group_left (sr_name)\r\n    (\r\n        label_replace ( xen_sr_info, \"sr_name\", \"$1\", \"name_label\", \"(.*)\" )\r\n   )",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{sr_name}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "-xen_host_sr_read_latency{uuid=\"$xen_host_uuid\"} \r\n    * on (  sr_uuid) group_left (sr_name)\r\n    (\r\n        label_replace ( xen_sr_info, \"sr_name\", \"$1\", \"name_label\", \"(.*)\" )\r\n   )",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{sr_name}}",
-          "range": true,
-          "refId": "B",
-          "useBackend": false
-        }
-      ],
-      "title": "SR Read / Write Latency",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": true,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "right",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#e02f44",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 18,
-        "y": 10
-      },
-      "id": 13,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "xen_host_sr_iops_read{uuid=\"$xen_host_uuid\"} \r\n    * on (  sr_uuid) group_left (sr_name)\r\n    (\r\n        label_replace ( xen_sr_info, \"sr_name\", \"$1\", \"name_label\", \"(.*)\" )\r\n   )",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{sr_name}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "-xen_host_sr_iops_write{uuid=\"$xen_host_uuid\"} \r\n    * on (  sr_uuid) group_left (sr_name)\r\n    (\r\n        label_replace ( xen_sr_info, \"sr_name\", \"$1\", \"name_label\", \"(.*)\" )\r\n   )",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{sr_name}}",
-          "range": true,
-          "refId": "B",
-          "useBackend": false
-        }
-      ],
-      "title": "IOPS Read / Write",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": true,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "right",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73bf69",
-                "value": 0
-              },
-              {
-                "color": "#e02f44",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "binBps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 15
-      },
-      "id": 6,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "-xen_host_pif_rx{uuid=\"$xen_host_uuid\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "rx-{{device}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${ds_samm_prometheus}"
-          },
-          "editorMode": "code",
-          "expr": "xen_host_pif_tx{uuid=\"$xen_host_uuid\"}\r\n",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "tx-{{device}}",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Network Interfaces",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${ds_samm_prometheus}"
-      },
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1142,8 +534,8 @@
           },
           "links": [
             {
-              "title": "XS VM Info",
-              "url": "/d/xs-vm-info-dev/vm-info-dev?orgId=1&refresh=5s&var-vm_uuid=${__field.labels.uuid}"
+              "title": "Link",
+              "url": "/d/cvad-overall-dashboard-dev/cvad-overall-dashboard-dev?orgId=1"
             }
           ],
           "mappings": [],
@@ -1151,30 +543,111 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5794f2",
+                "color": "green",
                 "value": 0
-              },
-              {
-                "color": "#e02f44",
-                "value": 80
               }
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "D"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "orange",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "E"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 22
+        "h": 4,
+        "w": 10,
+        "x": 14,
+        "y": 4
       },
-      "id": 4,
+      "id": 8,
       "options": {
-        "colorMode": "background_solid",
+        "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "center",
-        "orientation": "auto",
+        "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
@@ -1185,10 +658,9 @@
         },
         "showPercentChange": false,
         "text": {
-          "titleSize": 10,
-          "valueSize": 10
+          "valueSize": 40
         },
-        "textMode": "name",
+        "textMode": "auto",
         "wideLayout": true
       },
       "pluginVersion": "12.2.0-16711121739",
@@ -1198,54 +670,624 @@
             "type": "prometheus",
             "uid": "${ds_samm_prometheus}"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "xen_vm_info{resident_on=\"$xen_host_uuid\", power_state=\"Running\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{name_label}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count (snmp_ns_info_syscurmappedipcount)",
+          "instant": true,
+          "legendFormat": "Total",
+          "range": false,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (vsvrstate) (clamp(snmp_ns_vserverstats_vsvrhealth{vsvrstate=\"up\"}, 1, 1) or clamp_max(absent(nonexistent{vsvrstate=\"up\"}), 0))",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "vServer Status UP",
+          "range": false,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum by (vsvrstate) (clamp(snmp_ns_vserverstats_vsvrhealth{vsvrstate=\"down\"}, 1, 1) or clamp_max(absent(nonexistent{vsvrstate=\"down\"}), 0))",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "vServer Status DOWN",
+          "range": false,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count (snmp_ns_certkey_ssldaystoexpire < 30 > 0 )  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "SSL Certs Expiring this month",
+          "range": false,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "count (snmp_ns_certkey_ssldaystoexpire == 0 )  or vector ( 0 )",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "Expired Certificates",
+          "range": false,
+          "refId": "E"
         }
       ],
-      "title": "VM Running on $xen_host_hostname",
+      "title": "NetScalers",
+      "transparent": true,
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 7,
+        "x": 0,
+        "y": 8
+      },
+      "id": 20,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"2\"} != 1)",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Unregistered Single Session VMs",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "catalog_ismachinephysical",
+              "catalog_name",
+              "catalog_persistentuserchanges",
+              "catalog_provisioningtype",
+              "catalog_sessionsupport",
+              "ctx_site",
+              "desktopgroup_deliverytype",
+              "desktopgroup_desktopkind",
+              "desktopgroup_name",
+              "dnsname",
+              "fqdn",
+              "hostedmachinename",
+              "hostingservername",
+              "instance",
+              "job",
+              "layer",
+              "role",
+              "server_group"
+            ],
+            "valueLabel": "catalog_allocationtype"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "catalog_ismachinephysical": true,
+              "catalog_name": true,
+              "catalog_persistentuserchanges": true,
+              "catalog_provisioningtype": true,
+              "catalog_sessionsupport": true,
+              "ctx_machine_currentregistrationstate": true,
+              "ctx_site": true,
+              "desktopgroup_deliverytype": true,
+              "desktopgroup_desktopkind": true,
+              "desktopgroup_name": true,
+              "dnsname": true,
+              "hostedmachinename": false,
+              "instance": true,
+              "job": true,
+              "layer": true,
+              "role": true,
+              "server_group": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "catalog_ismachinephysical": 2,
+              "catalog_name": 3,
+              "catalog_persistentuserchanges": 4,
+              "catalog_provisioningtype": 5,
+              "catalog_sessionsupport": 6,
+              "ctx_machine_currentregistrationstate": 1,
+              "ctx_site": 7,
+              "desktopgroup_deliverytype": 8,
+              "desktopgroup_desktopkind": 9,
+              "desktopgroup_name": 10,
+              "dnsname": 11,
+              "fqdn": 14,
+              "hostedmachinename": 12,
+              "hostingservername": 13,
+              "instance": 15,
+              "job": 16,
+              "layer": 17,
+              "role": 18,
+              "server_group": 19
+            },
+            "renameByName": {
+              "fqdn": "",
+              "hostedmachinename": "VM Name",
+              "hostingservername": "Hosting Server"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 7,
+        "x": 7,
+        "y": 8
+      },
+      "id": 23,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(ctx_machine_currentregistrationstate{catalog_sessionsupport=\"1\"} != 1)",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Unregistered Single Session VMs",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "catalog_ismachinephysical",
+              "catalog_name",
+              "catalog_persistentuserchanges",
+              "catalog_provisioningtype",
+              "catalog_sessionsupport",
+              "ctx_site",
+              "desktopgroup_deliverytype",
+              "desktopgroup_desktopkind",
+              "desktopgroup_name",
+              "dnsname",
+              "fqdn",
+              "hostedmachinename",
+              "hostingservername",
+              "instance",
+              "job",
+              "layer",
+              "role",
+              "server_group"
+            ],
+            "valueLabel": "catalog_allocationtype"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "catalog_ismachinephysical": true,
+              "catalog_name": true,
+              "catalog_persistentuserchanges": true,
+              "catalog_provisioningtype": true,
+              "catalog_sessionsupport": true,
+              "ctx_machine_currentregistrationstate": true,
+              "ctx_site": true,
+              "desktopgroup_deliverytype": true,
+              "desktopgroup_desktopkind": true,
+              "desktopgroup_name": true,
+              "dnsname": true,
+              "hostedmachinename": false,
+              "instance": true,
+              "job": true,
+              "layer": true,
+              "role": true,
+              "server_group": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "catalog_ismachinephysical": 2,
+              "catalog_name": 3,
+              "catalog_persistentuserchanges": 4,
+              "catalog_provisioningtype": 5,
+              "catalog_sessionsupport": 6,
+              "ctx_machine_currentregistrationstate": 1,
+              "ctx_site": 7,
+              "desktopgroup_deliverytype": 8,
+              "desktopgroup_desktopkind": 9,
+              "desktopgroup_name": 10,
+              "dnsname": 11,
+              "fqdn": 14,
+              "hostedmachinename": 12,
+              "hostingservername": 13,
+              "instance": 15,
+              "job": 16,
+              "layer": 17,
+              "role": 18,
+              "server_group": 19
+            },
+            "renameByName": {
+              "hostedmachinename": "Machine Name",
+              "hostingservername": "Hosting Server"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 5,
+        "x": 14,
+        "y": 8
+      },
+      "id": 22,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": " (clamp(snmp_ns_vserverstats_vsvrhealth{vsvrstate=\"down\"}, 1, 1) or clamp_max(absent(nonexistent{vsvrstate=\"down\"}), 0))",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "NetScaler - DOWN LB Virtual Servers",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {}
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "__name__": true,
+              "job": true,
+              "snmp_ns_certkey_ssldaystoexpire": false,
+              "sslinputformat": true,
+              "vsvrentitytype": false,
+              "vsvrstate": true,
+              "vsvrtdid": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "Value": 3,
+              "instance": 1,
+              "job": 2,
+              "vsvrentitytype": 9,
+              "vsvripaddress": 5,
+              "vsvrname": 4,
+              "vsvrstate": 6,
+              "vsvrtdid": 7,
+              "vsvrtype": 8
+            },
+            "renameByName": {
+              "instance": "NetScaler Instance",
+              "vsvrentitytype": "VS Entity",
+              "vsvripaddress": "VIP",
+              "vsvrname": "Virtual Server Name",
+              "vsvrtype": "Type"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${ds_samm_prometheus}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "orange",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 5,
+        "x": 19,
+        "y": 8
+      },
+      "id": 21,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${ds_samm_prometheus}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "snmp_ns_certkey_ssldaystoexpire < 30",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "NetScaler - SSL Certificates (expired/soon to expire)",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {}
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "job": true,
+              "snmp_ns_certkey_ssldaystoexpire": false,
+              "sslinputformat": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 0,
+              "__name__": 1,
+              "instance": 2,
+              "job": 3,
+              "snmp_ns_certkey_ssldaystoexpire": 6,
+              "sslcertkeyname": 4,
+              "sslinputformat": 5
+            },
+            "renameByName": {
+              "snmp_ns_certkey_ssldaystoexpire": "Days to Expire",
+              "sslcertkeyname": "SSL Cert Name"
+            }
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
   "preload": false,
-  "refresh": "5s",
   "schemaVersion": 41,
   "tags": [
-    "HostInfo",
-    "XenServer"
+    "Citrix",
+    "CVAD",
+    "Overall Dashboard"
   ],
   "templating": {
     "list": [
-      {
-        "current": {
-          "text": "3XKLOUD03V",
-          "value": "3XKLOUD03V"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info,hostname)",
-        "includeAll": false,
-        "label": "xen_host_hostname",
-        "name": "xen_host_hostname",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info,hostname)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
       {
         "current": {
           "text": "samm-prometheus",
@@ -1261,102 +1303,6 @@
       },
       {
         "current": {
-          "text": "d75f59d2-0a04-474d-a50f-1b7d0ceefd15",
-          "value": "d75f59d2-0a04-474d-a50f-1b7d0ceefd15"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info{name_label=\"$xen_host_hostname\"},uuid)",
-        "hide": 2,
-        "includeAll": false,
-        "label": "XenServer Host",
-        "name": "xen_host_uuid",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info{name_label=\"$xen_host_hostname\"},uuid)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "samm-xen-pool1:8000",
-          "value": "samm-xen-pool1:8000"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},instance)",
-        "hide": 2,
-        "includeAll": false,
-        "label": "xen_host_instance",
-        "name": "xen_host_instance",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "3TESLA61A",
-          "value": "3TESLA61A"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_vm_info{instance=\"$xen_host_instance\", power_state=\"Running\"},name_label)",
-        "hide": 2,
-        "includeAll": false,
-        "name": "xen_vm_hostname",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_vm_info{instance=\"$xen_host_instance\", power_state=\"Running\"},name_label)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "3xkloud03v",
-          "value": "3xkloud03v"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},hostname)",
-        "hide": 2,
-        "includeAll": false,
-        "label": "xen_host_hostname",
-        "name": "xen_host_hostname",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},hostname)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
           "text": "https://samm.pr.mmmhc.com/grafana",
           "value": "https://samm.pr.mmmhc.com/grafana"
         },
@@ -1364,9 +1310,8 @@
           "type": "yesoreyeram-infinity-datasource",
           "uid": "fe37eb96-e778-4098-b04d-bf73e9683d48"
         },
-        "definition": "samm-config- (infinity) json",
+        "definition": "",
         "hide": 2,
-        "includeAll": false,
         "name": "grafanaurl",
         "options": [],
         "query": {
@@ -1376,7 +1321,7 @@
             "format": "table",
             "parser": "backend",
             "refId": "variable",
-            "root_selector": "grafanaurl",
+            "root_selector": "",
             "source": "url",
             "type": "json",
             "url": "https://s3.amazonaws.com/samm.samana.cloud/${__org.name}/config.json",
@@ -1394,21 +1339,21 @@
       },
       {
         "current": {
-          "text": "172.29.1.20",
-          "value": "172.29.1.20"
+          "text": "ASSIGNED Dev InnovaMD_",
+          "value": "ASSIGNED Dev InnovaMD_"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "${ds_samm_prometheus}"
         },
-        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},address)",
+        "definition": "label_values(ctx_machine_isinmaintenancemode,desktopgroup_name)",
         "hide": 2,
-        "includeAll": false,
-        "name": "xen_host_address",
+        "includeAll": true,
+        "name": "vda_desktopgroup",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},address)",
+          "query": "label_values(ctx_machine_isinmaintenancemode,desktopgroup_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1417,88 +1362,19 @@
       },
       {
         "current": {
-          "text": "Pool VDI 01",
-          "value": "Pool VDI 01"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_pool_info{instance=\"$xen_host_instance\"},name_label)",
-        "hide": 2,
-        "includeAll": false,
-        "name": "xen_pool_name",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_pool_info{instance=\"$xen_host_instance\"},name_label)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "Cisco Systems Inc",
-          "value": "Cisco Systems Inc"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},system_manufacturer)",
-        "hide": 2,
-        "includeAll": false,
-        "name": "xen_host_model",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},system_manufacturer)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "FLM241501UT",
-          "value": "FLM241501UT"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${ds_samm_prometheus}"
-        },
-        "definition": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},system_serial_number)",
-        "hide": 2,
-        "includeAll": false,
-        "name": "xen_host_serial",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(xen_host_info{uuid=\"$xen_host_uuid\"},system_serial_number)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "XenServer Host Information",
-          "value": "XenServer Host Information"
+          "text": "CVAD Overall Details",
+          "value": "CVAD Overall Details"
         },
         "hide": 2,
         "name": "dashboard_title",
         "options": [
           {
             "selected": true,
-            "text": "XenServer Host Information",
-            "value": "XenServer Host Information"
+            "text": "CVAD Overall Details",
+            "value": "CVAD Overall Details"
           }
         ],
-        "query": "XenServer Host Information",
+        "query": "CVAD Overall Details",
         "type": "textbox"
       },
       {
@@ -1521,12 +1397,12 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-host-info-dev",
-  "uid": "xs-host-info-dev",
-  "version": 8
+  "title": "cvad-overall-details-dev",
+  "uid": "cvad-overall-details-dev",
+  "version": 7
 }
