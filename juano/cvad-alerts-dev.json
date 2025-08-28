@@ -43,7 +43,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 18,
+        "h": 22,
         "w": 1,
         "x": 0,
         "y": 4
@@ -192,7 +192,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 18,
+        "h": 22,
         "w": 1,
         "x": 8,
         "y": 4
@@ -311,7 +311,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 18,
+        "h": 22,
         "w": 1,
         "x": 16,
         "y": 4
@@ -1552,6 +1552,302 @@
       ],
       "title": "Unregistered",
       "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "green",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 1,
+        "y": 22
+      },
+      "id": 20,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 10,
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "manual",
+        "text": {
+          "titleSize": 10,
+          "valueSize": 10
+        }
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "builder",
+          "expr": "cim_disk_freespace{role=\"fslogix\", caption=~\"E:\"}",
+          "instant": false,
+          "legendFormat": "{{label_name}}",
+          "range": true,
+          "refId": "E-Free"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "builder",
+          "expr": "cim_disk_size{role=\"fslogix\", caption=~\"E:\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "E-Total"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "builder",
+          "expr": "cim_disk_freespace{role=\"fslogix\", caption=~\"C:\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{label_name}}",
+          "range": true,
+          "refId": "C-Free"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "builder",
+          "expr": "cim_disk_size{role=\"fslogix\", caption=~\"C:\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{label_name}}",
+          "range": true,
+          "refId": "C-Total"
+        }
+      ],
+      "title": "FSLogix storage free space",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "3Alexandria27a-C:",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_size {__name__=\"cim_disk_size\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "3Alexandria-27b-C:",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_size {__name__=\"cim_disk_size\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "3Alexandria27c-C:",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_size {__name__=\"cim_disk_size\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "3Alexandria27a-E:",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "{__name__=\"cim_disk_size\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "3Alexandria27b-E:",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "{__name__=\"cim_disk_size\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "3Alexandria27c-E:",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "{__name__=\"cim_disk_size\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"P:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"P:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_freespace {__name__=\"cim_disk_freespace\", caption=\"P:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_size {__name__=\"cim_disk_size\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_size {__name__=\"cim_disk_size\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "cim_disk_size {__name__=\"cim_disk_size\", caption=\"C:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "{__name__=\"cim_disk_size\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "{__name__=\"cim_disk_size\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "{__name__=\"cim_disk_size\", caption=\"E:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "{__name__=\"cim_disk_size\", caption=\"P:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27a.pr.mmmhc.com\", instance=\"3alexandria27a\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "{__name__=\"cim_disk_size\", caption=\"P:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27b.pr.mmmhc.com\", instance=\"3alexandria27b\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true,
+              "{__name__=\"cim_disk_size\", caption=\"P:\", description=\"Local Fixed Disk\", drivetype=\"3\", fqdn=\"3alexandria27c.pr.mmmhc.com\", instance=\"3alexandria27c\", job=\"samm\", layer=\"control\", role=\"fslogix\"}": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "gauge"
     }
   ],
   "preload": false,
@@ -1666,19 +1962,19 @@
       },
       {
         "current": {
-          "text": "Alerts Panel",
-          "value": "Alerts Panel"
+          "text": "CVAD Alerts Panel",
+          "value": "CVAD Alerts Panel"
         },
         "hide": 2,
         "name": "dashboard_title",
         "options": [
           {
             "selected": true,
-            "text": "Alerts Panel",
-            "value": "Alerts Panel"
+            "text": "CVAD Alerts Panel",
+            "value": "CVAD Alerts Panel"
           }
         ],
-        "query": "Alerts Panel",
+        "query": "CVAD Alerts Panel",
         "type": "textbox"
       },
       {
@@ -1708,5 +2004,5 @@
   "timezone": "",
   "title": "cvad-alerts-dev",
   "uid": "cvad-alerts-dev",
-  "version": 2
+  "version": 5
 }

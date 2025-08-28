@@ -2199,19 +2199,19 @@
       },
       {
         "current": {
-          "text": "Citrix Failures",
-          "value": "Citrix Failures"
+          "text": "CVAD Failures",
+          "value": "CVAD Failures"
         },
         "hide": 2,
         "name": "dashboard_title",
         "options": [
           {
             "selected": true,
-            "text": "Citrix Failures",
-            "value": "Citrix Failures"
+            "text": "CVAD Failures",
+            "value": "CVAD Failures"
           }
         ],
-        "query": "Citrix Failures",
+        "query": "CVAD Failures",
         "type": "textbox"
       },
       {
@@ -2241,5 +2241,5 @@
   "timezone": "",
   "title": "cvad-failures-dev",
   "uid": "cvad-failures-dev",
-  "version": 1
+  "version": 2
 }

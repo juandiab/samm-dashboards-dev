@@ -1,0 +1,1624 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 101,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [
+        "citrix-failures"
+      ],
+      "targetBlank": false,
+      "title": "Citrix Failures",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "panels": [
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "libraryPanel": {
+        "name": "Dashboard Header",
+        "uid": "bev3km84zcmiod"
+      },
+      "title": "",
+      "type": "library-panel-ref"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 1,
+        "x": 0,
+        "y": 4
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": " <div style='writing-mode: vertical-rl; text-orientation: mixed; font-size: 18px; color: #ffffff; background: rgba(44, 62, 80, 0.92); padding: 32px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-family: monospace; min-width: 1.5em; height: 100%;'>\n        C<br/>O<br/>N<br/>T<br/>R<br/>O<br/>L</br>\n    </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Sessions"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Machines In Failure"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Failed Sessions"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 1,
+        "y": 4
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "dataset": "CitrixMMMLogging",
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  TOP(50)\r\n  COUNT(*) as 'Total Sessions',\r\n  NULL as 'Machines In Failure',\r\n  NULL as 'Failed Sessions'\r\nFROM\r\n  MonitorData.Session\r\nWHERE\r\n  EndDate IS NULL\r\nGROUP BY\r\n  IsAnonymous\r\nUNION\r\nSELECT\r\n  TOP(50)\r\n  NULL as 'Total Sessions',\r\n  COUNT(*) as 'Machines In Failure',\r\n  NULL as 'Failed Sessions'\r\nFROM\r\n  MonitorData.MachineFailureLog\r\nWHERE\r\n  FailureEndDate IS NULL\r\nUNION\r\nSELECT\r\n  TOP(50)\r\n  NULL as 'Total Sessions',\r\n  NULL as 'Machines In Failure',\r\n  COUNT(*) as 'Failed Sessions'\r\nFROM\r\n  MonitorData.ConnectionFailureLog\r\nWHERE\r\n  $__timeFilter(FailureDate)",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Panel Title",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Machine Catalogs",
+              "url": "/d/a89835c6-8b11-41ca-b4b1-6c45cecb7a55/vdi-machine-catalog-overview?orgId=1&${__url_time_range}"
+            },
+            {
+              "title": "Delivery Groups",
+              "url": "/d/eca44171-24b3-4858-af9c-786bd6dbe841/vdi-delivery-group-overview?orgId=1&${__url_time_range}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 2
+              },
+              {
+                "color": "green",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Percent InMaintenance"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 0.05
+                    },
+                    {
+                      "color": "red",
+                      "value": 0.1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Percent UnRegistered"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 0.000001
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 5,
+        "y": 4
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "dataset": "CitrixMMMLogging",
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT (\r\n  SELECT\r\n    COUNT(*) \r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 1\r\n) 'Machines',\r\n(\r\n  SELECT\r\n    COUNT(*) \r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 1 AND\r\n    m.CurrentSessionCount > 0\r\n) 'Sessions',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 1 AND\r\n    m.CurrentSessionCount = 0\r\n) 'Available',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 1 AND\r\n    m.CurrentRegistrationState = 1\r\n) 'Registered',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 1 AND\r\n    m.CurrentRegistrationState <> 1\r\n) 'Unregistered',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 1 AND\r\n    m.IsInMaintenanceMode = 1\r\n) 'IsInMaintenanceMode'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "VDI",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent InMaintenance",
+            "binary": {
+              "left": "IsInMaintenanceMode",
+              "operator": "/",
+              "right": "Machines"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent UnRegistered",
+            "binary": {
+              "left": "Unregistered",
+              "operator": "/",
+              "right": "Machines"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "IsInMaintenanceMode": true,
+              "Percent InMaintenance": false,
+              "Unregistered": true,
+              "Value #inmaintenance": true,
+              "Value #unregistered": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Available": 2,
+              "IsInMaintenanceMode": 7,
+              "Machines": 0,
+              "Percent InMaintenance": 5,
+              "Percent UnRegistered": 4,
+              "Registered": 3,
+              "Sessions": 1,
+              "Unregistered": 6
+            },
+            "renameByName": {
+              "Value #available": "Available",
+              "Value #inmaintenance": "InMaintenance",
+              "Value #inuse": "Sessions",
+              "Value #registered": "Registered",
+              "Value #total": "Machines",
+              "Value #unregistered": "UnRegistered"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Machine Catalogs",
+              "url": "/d/a715ef32-46d4-407e-b76c-fd991392ba28/vda-machine-catalog-overview?orgId=1&${__url_time_range}"
+            },
+            {
+              "title": "Delivery Groups",
+              "url": "/d/f37aec43-c073-47ad-bdc7-83f46ff26a61/vda-delivery-group-overview?orgId=1&${__url_time_range}"
+            }
+          ],
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 2
+              },
+              {
+                "color": "green",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Percent InMaintenance"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 0.05
+                    },
+                    {
+                      "color": "red",
+                      "value": 0.1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Percent UnRegistered"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "red",
+                      "value": 0.000001
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value #loadindex"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Load Index"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 9500
+                    },
+                    {
+                      "color": "red",
+                      "value": 9800
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 10,
+        "y": 4
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "dataset": "CitrixMMMLogging",
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT (\r\n  SELECT\r\n    COUNT(*) \r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 2\r\n) 'Machines',\r\n(\r\n  SELECT\r\n    SUM(m.CurrentSessionCount) \r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 2\r\n) 'Sessions',\r\n(\r\n  SELECT\r\n    SUM(l.EffectiveLoadIndex) / COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c,\r\n    MonitorData.LoadIndex l\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.CurrentLoadIndexId = l.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 2\r\n) 'Load Index',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 2 AND\r\n    m.CurrentRegistrationState = 1\r\n) 'Registered',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 2 AND\r\n    m.CurrentRegistrationState <> 1\r\n) 'Unregistered',\r\n(\r\n  SELECT\r\n    COUNT(*)\r\n  FROM\r\n    MonitorData.Machine m,\r\n    MonitorData.Catalog c\r\n  WHERE\r\n    m.CatalogId = c.Id AND\r\n    m.LifecycleState = 0 AND\r\n    c.SessionSupport = 2 AND\r\n    m.IsInMaintenanceMode = 1\r\n) 'IsInMaintenanceMode'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "VDA",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent InMaintenance",
+            "binary": {
+              "left": "IsInMaintenanceMode",
+              "operator": "/",
+              "right": "Machines"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent UnRegistered",
+            "binary": {
+              "left": "Unregistered",
+              "operator": "/",
+              "right": "Machines"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "IsInMaintenanceMode": true,
+              "Unregistered": true,
+              "Value #inmaintenance": true,
+              "Value #unregistered": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "IsInMaintenanceMode": 7,
+              "Load Index": 2,
+              "Machines": 0,
+              "Percent InMaintenance": 5,
+              "Percent UnRegistered": 4,
+              "Registered": 3,
+              "Sessions": 1,
+              "Unregistered": 6
+            },
+            "renameByName": {
+              "Value #available": "Available",
+              "Value #inuse": "InUse",
+              "Value #registered": "Registered",
+              "Value #sessions": "Sessions",
+              "Value #total": "Machines",
+              "sessions": "Sessions"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "${__field.labels.desktopgroup_name}",
+          "links": [
+            {
+              "targetBlank": true,
+              "title": "",
+              "url": "/d/a2b35c70-7470-4f91-a4bb-c669453654c9/machine-overview-by-desktopgroup?orgId=1&var-desktopgroup_name=${__field.labels.desktopgroup_name}&var-uptime_threshold=172800"
+            }
+          ],
+          "mappings": [],
+          "noValue": "No Alerts",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 9,
+        "x": 15,
+        "y": 4
+      },
+      "id": 11,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 18,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort_desc(count by (desktopgroup_name) ((time() - cim_os_lastbootuptime > 172800) + on (fqdn) group_left (desktopgroup_name) (label_replace(sum by (desktopgroup_name,dnsname) (ctx_machine_isinmaintenancemode{desktopgroup_name!=\"none\",catalog_sessionsupport=\"1\"}) * 0, \"fqdn\", \"$1\", \"dnsname\", \"(.*)\"))))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "90s",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Alerted by Uptime > 2 days - VDI",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Exit Code"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "None"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "SessionPreparation"
+                      },
+                      "3": {
+                        "index": 3,
+                        "text": "RegistrationTimeout"
+                      },
+                      "4": {
+                        "index": 4,
+                        "text": "ConnectionTimeout"
+                      },
+                      "5": {
+                        "index": 5,
+                        "text": "Licensing"
+                      },
+                      "6": {
+                        "index": 6,
+                        "text": "Ticketing"
+                      },
+                      "7": {
+                        "index": 7,
+                        "text": "Other"
+                      },
+                      "8": {
+                        "index": 8,
+                        "text": "GeneralFail"
+                      },
+                      "9": {
+                        "index": 9,
+                        "text": "MaintenanceMode"
+                      },
+                      "10": {
+                        "index": 10,
+                        "text": "ApplicationDisabled"
+                      },
+                      "11": {
+                        "index": 11,
+                        "text": "LicenseFeatureRefused"
+                      },
+                      "12": {
+                        "index": 12,
+                        "text": "NoDesktopAvailable"
+                      },
+                      "13": {
+                        "index": 13,
+                        "text": "SessionLimitReached"
+                      },
+                      "14": {
+                        "index": 14,
+                        "text": "DisallowedProtocol"
+                      },
+                      "15": {
+                        "index": 15,
+                        "text": "ResourceUnavailable"
+                      },
+                      "16": {
+                        "index": 16,
+                        "text": "ActiveSessionReconnectDisabled"
+                      },
+                      "17": {
+                        "index": 17,
+                        "text": "NoSessionToReconnect"
+                      },
+                      "18": {
+                        "index": 18,
+                        "text": "SpinUpFailed"
+                      },
+                      "19": {
+                        "index": 19,
+                        "text": "Refused"
+                      },
+                      "20": {
+                        "index": 20,
+                        "text": "ConfigurationSetFailure"
+                      },
+                      "21": {
+                        "index": 21,
+                        "text": "MaxTotalInstancesExceeded"
+                      },
+                      "22": {
+                        "index": 22,
+                        "text": "MaxPerUserInstancesExceeded"
+                      },
+                      "23": {
+                        "index": 23,
+                        "text": "CommunicationError"
+                      },
+                      "24": {
+                        "index": 24,
+                        "text": "MaxPerMachineInstancesExceeded"
+                      },
+                      "25": {
+                        "index": 25,
+                        "text": "MaxPerEntitlementInstancesExceeded"
+                      },
+                      "100": {
+                        "index": 100,
+                        "text": "NoMachineAvailable"
+                      },
+                      "101": {
+                        "index": 101,
+                        "text": "MachineNotFunctional"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeFromNow"
+              },
+              {
+                "id": "custom.width",
+                "value": 127
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 1,
+        "y": 12
+      },
+      "id": 7,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "dataset": "CitrixMMMLogging",
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  TOP(50) cf.FailureDate Time, u.Upn 'User', m.DnsName 'Machine', cf.ConnectionFailureEnumValue \"Exit Code\"\r\nFROM\r\n  MonitorData.ConnectionFailureLog cf,\r\n  MonitorData.[User] u,\r\n  MonitorData.Machine m\r\nWHERE\r\n  cf.UserId = u.Id AND\r\n  cf.MachineId = m.Id AND\r\n  $__timeFilter(cf.FailureDate)",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Session Failures",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 145
+              },
+              {
+                "id": "unit",
+                "value": "dateTimeFromNow"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Fault State"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "None (Healthy)"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "Failed to Start"
+                      },
+                      "3": {
+                        "index": 3,
+                        "text": "Stuck On Boot"
+                      },
+                      "4": {
+                        "index": 4,
+                        "text": "Unregistered"
+                      },
+                      "5": {
+                        "index": 5,
+                        "text": "Max Capacity"
+                      },
+                      "6": {
+                        "index": 6,
+                        "text": "VM not found"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 164
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last Deregistration Code"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "AgentShutdown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "AgentSuspended"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "AgentRequested"
+                      },
+                      "100": {
+                        "index": 3,
+                        "text": "IncompatibleVersion"
+                      },
+                      "101": {
+                        "index": 4,
+                        "text": "AgentAddressResolutionFailed"
+                      },
+                      "102": {
+                        "index": 5,
+                        "text": "AgentNotContactable"
+                      },
+                      "103": {
+                        "index": 6,
+                        "text": "AgentWrongActiveDirectoryOU"
+                      },
+                      "104": {
+                        "index": 7,
+                        "text": "EmptyRegistrationRequest"
+                      },
+                      "105": {
+                        "index": 8,
+                        "text": "MissingRegistrationCapabilities"
+                      },
+                      "106": {
+                        "index": 9,
+                        "text": "MissingAgentVersion"
+                      },
+                      "107": {
+                        "index": 10,
+                        "text": "InconsistentRegistrationCapabilities"
+                      },
+                      "108": {
+                        "index": 11,
+                        "text": "NotLicensedForFeature"
+                      },
+                      "109": {
+                        "index": 12,
+                        "text": "UnsupportedCredentialSecurityVersion"
+                      },
+                      "110": {
+                        "index": 13,
+                        "text": "InvalidRegistrationRequest"
+                      },
+                      "111": {
+                        "index": 14,
+                        "text": "SingleMultiSessionMismatch"
+                      },
+                      "112": {
+                        "index": 15,
+                        "text": "FunctionalLevelTooLowForCatalog"
+                      },
+                      "113": {
+                        "index": 16,
+                        "text": "FunctionalLevelTooLowForDesktopGroup"
+                      },
+                      "114": {
+                        "index": 17,
+                        "text": "OSNotCompatibleWithDdc"
+                      },
+                      "115": {
+                        "index": 18,
+                        "text": "VMNotCompatibleWithDdc"
+                      },
+                      "200": {
+                        "index": 19,
+                        "text": "PowerOff"
+                      },
+                      "201": {
+                        "index": 20,
+                        "text": "DesktopRestart"
+                      },
+                      "202": {
+                        "index": 21,
+                        "text": "DesktopRemoved"
+                      },
+                      "203": {
+                        "index": 22,
+                        "text": "AgentRejectedSettingsUpdate"
+                      },
+                      "204": {
+                        "index": 23,
+                        "text": "SendSettingsFailure"
+                      },
+                      "205": {
+                        "index": 24,
+                        "text": "SessionAuditFailure"
+                      },
+                      "206": {
+                        "index": 25,
+                        "text": "SessionPrepareFailure"
+                      },
+                      "207": {
+                        "index": 26,
+                        "text": "ContactLost"
+                      },
+                      "208": {
+                        "index": 27,
+                        "text": "SettingsCreationFailure"
+                      },
+                      "300": {
+                        "index": 28,
+                        "text": "SettingsCreationFailure"
+                      },
+                      "301": {
+                        "index": 29,
+                        "text": "BrokerRegistrationLimitReached"
+                      },
+                      "400": {
+                        "index": 30,
+                        "text": "None"
+                      },
+                      "401": {
+                        "index": 31,
+                        "text": "HypervisorReportedFailure"
+                      },
+                      "402": {
+                        "index": 32,
+                        "text": "HypervisorRateLimitExceeded"
+                      },
+                      "1000": {
+                        "index": 33,
+                        "text": "HardRegistrationPending"
+                      },
+                      "1001": {
+                        "index": 34,
+                        "text": "SoftRegistered"
+                      },
+                      "1002": {
+                        "index": 35,
+                        "text": "Unknown"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 170
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Power State"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "Off"
+                      },
+                      "3": {
+                        "index": 3,
+                        "text": "On"
+                      },
+                      "4": {
+                        "index": 4,
+                        "text": "Suspended"
+                      },
+                      "5": {
+                        "index": 5,
+                        "text": "TurningOn"
+                      },
+                      "6": {
+                        "index": 6,
+                        "text": "TurningOff"
+                      },
+                      "7": {
+                        "index": 7,
+                        "text": "Suspending"
+                      },
+                      "8": {
+                        "index": 8,
+                        "text": "Resuming"
+                      },
+                      "9": {
+                        "index": 9,
+                        "text": "Unmanaged"
+                      },
+                      "10": {
+                        "index": 10,
+                        "text": "NotSupported"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 107
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Machine"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 248
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Assigned User"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 176
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 5,
+        "x": 10,
+        "y": 12
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "dataset": "CitrixMMMLogging",
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  TOP(50) \r\n  f.FailureStartDate 'Time',\r\n  m.DnsName Machine,\r\n  m.AssociatedUserUpns 'Assigned User',\r\n  f.FaultState 'Fault State',\r\n  f.LastDeregisteredCode 'Last Deregistration Code',\r\n  m.CurrentPowerState 'Power State',\r\n  m.HostingServerName 'Hosting Server'\r\nFROM\r\n  MonitorData.MachineFailureLog f,\r\n  MonitorData.Machine m\r\nWHERE\r\n  f.MachineId = m.Id AND\r\n  FailureEndDate IS NULL",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Failed Machines",
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 41,
+  "tags": [
+    "citrix-site",
+    "CVAD",
+    "Citrix"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "3tesla53a",
+          "value": "3tesla53a"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(ctx_machine_currentpowerstate,instance)",
+        "includeAll": false,
+        "label": "Instance",
+        "name": "instance",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ctx_machine_currentpowerstate,instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "vdidevbts-00006.pr.mmmhc.com",
+          "value": "vdidevbts-00006.pr.mmmhc.com"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(ctx_machine_currentpowerstate{catalog_sessionsupport=\"1\"},dnsname)",
+        "hide": 2,
+        "includeAll": false,
+        "name": "vdi_machines",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ctx_machine_currentpowerstate{catalog_sessionsupport=\"1\"},dnsname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+        },
+        "definition": "label_values(ctx_machine_currentpowerstate{catalog_sessionsupport=\"2\"},dnsname)",
+        "hide": 2,
+        "includeAll": true,
+        "multi": true,
+        "name": "vda_machines",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(ctx_machine_currentpowerstate{catalog_sessionsupport=\"2\"},dnsname)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "citrix-monitor",
+          "value": "PAF719D936019406A"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "name": "datasource",
+        "options": [],
+        "query": "mssql",
+        "refresh": 1,
+        "regex": "/^citrix-monitor/",
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "CVAD Site",
+          "value": "CVAD Site"
+        },
+        "hide": 2,
+        "name": "dashboard_title",
+        "options": [
+          {
+            "selected": true,
+            "text": "CVAD Site",
+            "value": "CVAD Site"
+          }
+        ],
+        "query": "CVAD Site",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Comprehensive System Monitoring & Management",
+          "value": "Comprehensive System Monitoring & Management"
+        },
+        "hide": 2,
+        "name": "dashboard_subtitle",
+        "options": [
+          {
+            "selected": true,
+            "text": "Comprehensive System Monitoring & Management",
+            "value": "Comprehensive System Monitoring & Management"
+          }
+        ],
+        "query": "Comprehensive System Monitoring & Management",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "cvad-site-dev",
+  "uid": "cvad-site-dev",
+  "version": 4
+}
