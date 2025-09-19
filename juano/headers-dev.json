@@ -1,271 +1,359 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": null,
-    "links": [],
-    "liveNow": false,
-    "panels": [
+  "annotations": {
+    "list": [
       {
+        "builtIn": 1,
         "datasource": {
           "type": "grafana",
           "uid": "-- Grafana --"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "vis": false
-              }
-            },
-            "mappings": []
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 1,
-        "options": {
-          "content": "<div style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;\">\n  <div style=\"display: flex; align-items: center;\">\n    <img src=\"https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg\" alt=\"SAMM Logo\" style=\"height: 50px; margin-right: 20px; filter: brightness(0) invert(1);\">\n    <div>\n      <h1 style=\"color: white; margin: 0; font-size: 28px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);\">$dashboard-title</h1>\n      <p style=\"color: rgba(255,255,255,0.9); margin: 5px 0 0 0; font-size: 16px;\">$dashboard-subtitle</p>\n    </div>\n  </div>\n  <div style=\"background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 25px; backdrop-filter: blur(10px);\">\n    <span style=\"color: white; font-weight: bold; font-size: 14px;\">Header Module 1</span>\n  </div>\n</div>",
-          "mode": "html"
-        },
-        "pluginVersion": "10.0.0",
-        "targets": [],
-        "title": "Header Module 1 - Gradient Style",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "vis": false
-              }
-            },
-            "mappings": []
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 24,
-          "x": 0,
-          "y": 4
-        },
-        "id": 2,
-        "options": {
-          "content": "<div style=\"background: #1a1a1a; border: 2px solid #333; padding: 25px; border-radius: 0; position: relative; overflow: hidden;\">\n  <div style=\"position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);\"></div>\n  <div style=\"display: flex; align-items: center; justify-content: space-between;\">\n    <div style=\"display: flex; align-items: center;\">\n      <div style=\"background: #333; padding: 15px; border-radius: 50%; margin-right: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5);\">\n        <img src=\"https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg\" alt=\"SAMM Logo\" style=\"height: 40px; filter: brightness(0) invert(1);\">\n      </div>\n      <div>\n        <h1 style=\"color: #ffffff; margin: 0; font-size: 32px; font-weight: 300; letter-spacing: 2px;\">$dashboard-title</h1>\n        <p style=\"color: #888; margin: 8px 0 0 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;\">$dashboard-subtitle</p>\n      </div>\n    </div>\n    <div style=\"text-align: right;\">\n      <div style=\"background: #333; color: #4ecdc4; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;\">Header Module 2</div>\n    </div>\n  </div>\n</div>",
-          "mode": "html"
-        },
-        "pluginVersion": "10.0.0",
-        "targets": [],
-        "title": "Header Module 2 - Dark Minimalist",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "vis": false
-              }
-            },
-            "mappings": []
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 24,
-          "x": 0,
-          "y": 8
-        },
-        "id": 3,
-        "options": {
-          "content": "<div style=\"background: #f8f9fa; border-left: 6px solid #007bff; padding: 30px; position: relative; box-shadow: 0 2px 10px rgba(0,0,0,0.1);\">\n  <div style=\"position: absolute; top: 0; right: 0; width: 0; height: 0; border-left: 50px solid transparent; border-top: 50px solid #007bff;\"></div>\n  <div style=\"display: flex; align-items: center; justify-content: space-between;\">\n    <div style=\"display: flex; align-items: center;\">\n      <div style=\"background: white; padding: 20px; border-radius: 15px; margin-right: 25px; box-shadow: 0 4px 15px rgba(0,123,255,0.2); border: 2px solid #007bff;\">\n        <img src=\"https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg\" alt=\"SAMM Logo\" style=\"height: 45px;\">\n      </div>\n      <div>\n        <h1 style=\"color: #007bff; margin: 0; font-size: 30px; font-weight: 600; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);\">$dashboard-title</h1>\n        <p style=\"color: #6c757d; margin: 10px 0 0 0; font-size: 16px; font-style: italic;\">$dashboard-subtitle</p>\n      </div>\n    </div>\n    <div style=\"background: #007bff; color: white; padding: 12px 24px; border-radius: 30px; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,123,255,0.3);\">Header Module 3</div>\n  </div>\n</div>",
-          "mode": "html"
-        },
-        "pluginVersion": "10.0.0",
-        "targets": [],
-        "title": "Header Module 3 - Corporate Blue",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "vis": false
-              }
-            },
-            "mappings": []
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 24,
-          "x": 0,
-          "y": 12
-        },
-        "id": 4,
-        "options": {
-          "content": "<div style=\"background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); padding: 25px; border-radius: 20px; position: relative; overflow: hidden;\">\n  <div style=\"position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: rgba(255,255,255,0.2); border-radius: 50%;\"></div>\n  <div style=\"position: absolute; bottom: -30px; left: -30px; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%;\"></div>\n  <div style=\"display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1;\">\n    <div style=\"display: flex; align-items: center;\">\n      <div style=\"background: rgba(255,255,255,0.9); padding: 15px; border-radius: 20px; margin-right: 20px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.1);\">\n        <img src=\"https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg\" alt=\"SAMM Logo\" style=\"height: 50px;\">\n      </div>\n      <div>\n        <h1 style=\"color: #d63384; margin: 0; font-size: 28px; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);\">$dashboard-title</h1>\n        <p style=\"color: #6f42c1; margin: 8px 0 0 0; font-size: 15px; font-weight: 500;\">$dashboard-subtitle</p>\n      </div>\n    </div>\n    <div style=\"background: rgba(255,255,255,0.9); color: #d63384; padding: 10px 20px; border-radius: 25px; font-weight: bold; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1);\">Header Module 4</div>\n  </div>\n</div>",
-          "mode": "html"
-        },
-        "pluginVersion": "10.0.0",
-        "targets": [],
-        "title": "Header Module 4 - Pink Gradient",
-        "type": "text"
-      },
-      {
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "vis": false
-              }
-            },
-            "mappings": []
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 4,
-          "w": 24,
-          "x": 0,
-          "y": 16
-        },
-        "id": 5,
-        "options": {
-          "content": "<div style=\"background: #2c3e50; padding: 30px; position: relative; border-radius: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.3);\">\n  <div style=\"position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #2ecc71, #3498db, #9b59b6);\"></div>\n  <div style=\"display: flex; align-items: center; justify-content: space-between;\">\n    <div style=\"display: flex; align-items: center;\">\n      <div style=\"background: linear-gradient(135deg, #34495e, #2c3e50); padding: 20px; border-radius: 15px; margin-right: 25px; border: 2px solid #3498db; box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);\">\n        <img src=\"https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg\" alt=\"SAMM Logo\" style=\"height: 45px; filter: brightness(0) invert(1);\">\n      </div>\n      <div>\n        <h1 style=\"color: #ecf0f1; margin: 0; font-size: 34px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;\">$dashboard-title</h1>\n        <p style=\"color: #bdc3c7; margin: 12px 0 0 0; font-size: 16px; font-weight: 400; letter-spacing: 1px;\">$dashboard-subtitle</p>\n      </div>\n    </div>\n    <div style=\"display: flex; flex-direction: column; align-items: flex-end;\">\n      <div style=\"background: #3498db; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;\">Header Module 5</div>\n      <div style=\"width: 60px; height: 3px; background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #2ecc71, #3498db, #9b59b6); border-radius: 2px;\"></div>\n    </div>\n  </div>\n</div>",
-          "mode": "html"
-        },
-        "pluginVersion": "10.0.0",
-        "targets": [],
-        "title": "Header Module 5 - Professional Dark",
-        "type": "text"
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "refresh": "5s",
-    "schemaVersion": 37,
-    "style": "dark",
-    "tags": ["headers", "development"],
-    "templating": {
-      "list": [
-        {
-          "current": {
-            "selected": false,
-            "text": "SAMM Dashboard",
-            "value": "SAMM Dashboard"
-          },
-          "hide": 0,
-          "label": "Dashboard Title",
-          "name": "dashboard-title",
-          "options": [
-            {
-              "selected": true,
-              "text": "SAMM Dashboard",
-              "value": "SAMM Dashboard"
-            }
-          ],
-          "query": "SAMM Dashboard",
-          "skipUrlSync": false,
-          "type": "textbox"
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 117,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
         },
-        {
-          "current": {
-            "selected": false,
-            "text": "Development Environment",
-            "value": "Development Environment"
-          },
-          "hide": 0,
-          "label": "Dashboard Subtitle",
-          "name": "dashboard-subtitle",
-          "options": [
-            {
-              "selected": true,
-              "text": "Development Environment",
-              "value": "Development Environment"
-            }
-          ],
-          "query": "Development Environment",
-          "skipUrlSync": false,
-          "type": "textbox"
-        }
-      ]
+        "content": "<div style='background: #1a1a1a; padding: 4px 16px 8px 16px; border-radius: 0 0 12px 12px; border: 1px solid #333; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 60%, #ff006e 100%);'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 20px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 12px 12px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 50px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 16px; font-weight: 600; margin: 0; letter-spacing: -0.2px; cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #888; font-size: 10px; margin: 2px 0 0 0; font-weight: 400;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto;' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
     },
-    "time": {
-      "from": "now-6h",
-      "to": "now"
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 20px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 60%, #ff006e 100%); border-radius: 2px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 32px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 16px 16px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 62px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 12px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
     },
-    "timepicker": {},
-    "timezone": "",
-    "title": "Headers Development Dashboard",
-    "uid": "headers-dev",
-    "version": 1,
-    "weekStart": ""
-  }
-  
-  
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 3,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 24px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 50%, #ff006e 100%); border-radius: 1px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 28px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 20px 20px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 66px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -0.6px; text-shadow: 0 3px 6px rgba(0,0,0,0.6); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #bbb; font-size: 13px; margin: 5px 0 0 0; font-weight: 500; opacity: 0.95;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 18px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 40%, #ff006e 80%, #00ff88 100%); border-radius: 1.5px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 30px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 24px 24px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 61px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 18px; font-weight: 600; margin: 0; letter-spacing: -0.4px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #999; font-size: 11px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 5,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 22px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 30%, #ff006e 70%, #00ff88 100%); border-radius: 2.5px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 26px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 18px 18px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 64px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 3px 10px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #ccc; font-size: 12px; margin: 5px 0 0 0; font-weight: 500; opacity: 0.92;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 6,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 16px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 50%, #ff006e 100%); border-radius: 1px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 24px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 12px 12px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 58px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 18px; font-weight: 600; margin: 0; letter-spacing: -0.3px; text-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 11px; margin: 3px 0 0 0; font-weight: 400; opacity: 0.88;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 20px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #4a5568 0%, #718096 50%, #a0aec0 100%); border-radius: 2px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 32px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 16px 16px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 62px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 12px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 20px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #2d3748 0%, #4a5568 50%, #718096 100%); border-radius: 2px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 32px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 16px 16px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 62px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 12px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 9,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 20px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #4a5568 0%, #2d3748 50%, #1a202c 100%); border-radius: 2px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 32px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 16px 16px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 62px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 12px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 10,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 20px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #718096 0%, #4a5568 50%, #2d3748 100%); border-radius: 2px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 32px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 16px 16px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 62px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 12px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 11,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 20px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #a0aec0 0%, #718096 50%, #4a5568 100%); border-radius: 2px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 32px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 16px 16px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 62px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 19px; font-weight: 700; margin: 0; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #aaa; font-size: 12px; margin: 4px 0 0 0; font-weight: 400; opacity: 0.9;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "CVAD Overall Dashboard",
+          "value": "CVAD Overall Dashboard"
+        },
+        "name": "dashboard_title",
+        "options": [
+          {
+            "selected": true,
+            "text": "CVAD Overall Dashboard",
+            "value": "CVAD Overall Dashboard"
+          }
+        ],
+        "query": "CVAD Overall Dashboard",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Comprehensive System Monitoring & Management",
+          "value": "Comprehensive System Monitoring & Management"
+        },
+        "name": "dashboard_subtitle",
+        "options": [
+          {
+            "selected": true,
+            "text": "Comprehensive System Monitoring & Management",
+            "value": "Comprehensive System Monitoring & Management"
+          }
+        ],
+        "query": "Comprehensive System Monitoring & Management",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "headers-dev",
+  "uid": "headers-dev",
+  "version": 2
+}

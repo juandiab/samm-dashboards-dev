@@ -1,0 +1,1424 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 104,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 22,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 24px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 50%, #ff006e 100%); border-radius: 1px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 28px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 20px 20px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 66px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -0.6px; text-shadow: 0 3px 6px rgba(0,0,0,0.6); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #bbb; font-size: 13px; margin: 5px 0 0 0; font-weight: 500; opacity: 0.95;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/samm-overview-dev/samm-overview-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 4
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^SAMM Overview$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "SAMM Overview",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/netscaler-overview-dev/netscaler-overview-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 5,
+        "y": 4
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^NetScaler Overview$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "NetScaler Overview",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/xs-pool-info-overall-dev/xs-pool-info-overall-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "cyan",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 10,
+        "y": 4
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^XenServer Pool Info Overall$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "XenServer Pool Info Overall",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 35,
+        "w": 9,
+        "x": 15,
+        "y": 4
+      },
+      "id": 19,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"padding: 20px; font-family: Arial, sans-serif; line-height: 1.6; color: #d8d9da; background: transparent;\">\n  <h2 style=\"color: #ffffff; margin-bottom: 20px; border-bottom: 2px solid #4a9eff; padding-bottom: 10px;\">📊 SAMM Dashboard Tutorial</h2>\n  \n  <div style=\"background: rgba(74, 158, 255, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(74, 158, 255, 0.3);\">\n    <h3 style=\"color: #4a9eff; margin-top: 0;\">🎯 What is SAMM?</h3>\n    <p style=\"margin: 0; color: #d8d9da;\">SAMM (Samana Advanced Monitoring and Management System) is a comprehensive monitoring platform that provides real-time insights into your infrastructure health. It monitors various components including CVAD, NetScaler, Windows servers, and XenServer environments.</p>\n  </div>\n  \n  <div style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;\">\n    <div style=\"background: rgba(138, 43, 226, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid #8a2be2; border: 1px solid rgba(138, 43, 226, 0.3);\">\n      <h4 style=\"color: #8a2be2; margin-top: 0;\">🔍 How to Navigate</h4>\n      <ul style=\"margin: 0; padding-left: 20px; color: #d8d9da;\">\n        <li>Click on any panel to navigate to detailed dashboards</li>\n        <li>Each panel shows real-time metrics and status</li>\n        <li>Blue indicators mean healthy status</li>\n        <li>Use the time picker to adjust time ranges</li>\n      </ul>\n    </div>\n    \n    <div style=\"background: rgba(255, 165, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid #ffa500; border: 1px solid rgba(255, 165, 0, 0.3);\">\n      <h4 style=\"color: #ffa500; margin-top: 0;\">⚡ Key Features</h4>\n      <ul style=\"margin: 0; padding-left: 20px; color: #d8d9da;\">\n        <li>Real-time monitoring and alerting</li>\n        <li>Historical data analysis</li>\n        <li>Customizable time ranges</li>\n        <li>Interactive visualizations</li>\n      </ul>\n    </div>\n  </div>\n  \n  <div style=\"background: rgba(0, 191, 255, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(0, 191, 255, 0.3);\">\n    <h3 style=\"color: #00bfff; margin-top: 0;\">📋 Dashboard Categories</h3>\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;\">\n      <div>\n        <strong style=\"color: #00bfff;\">CVAD Dashboards:</strong>\n        <ul style=\"margin: 5px 0 0 0; padding-left: 20px; color: #d8d9da;\">\n          <li>Alerts & Failures</li>\n          <li>Overall Status</li>\n          <li>Site Information</li>\n        </ul>\n      </div>\n      <div>\n        <strong style=\"color: #00bfff;\">NetScaler:</strong>\n        <ul style=\"margin: 5px 0 0 0; padding-left: 20px; color: #d8d9da;\">\n          <li>Overview & Status</li>\n          <li>Performance Metrics</li>\n        </ul>\n      </div>\n      <div>\n        <strong style=\"color: #00bfff;\">Windows Servers:</strong>\n        <ul style=\"margin: 5px 0 0 0; padding-left: 20px; color: #d8d9da;\">\n          <li>Server Status</li>\n          <li>Logon Times</li>\n          <li>Event Monitoring</li>\n        </ul>\n      </div>\n      <div>\n        <strong style=\"color: #00bfff;\">XenServer:</strong>\n        <ul style=\"margin: 5px 0 0 0; padding-left: 20px; color: #d8d9da;\">\n          <li>Host Information</li>\n          <li>Pool Status</li>\n          <li>VM Monitoring</li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  \n  <div style=\"background: rgba(186, 85, 211, 0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(186, 85, 211, 0.3);\">\n    <h3 style=\"color: #ba55d3; margin-top: 0;\">💡 Pro Tips</h3>\n    <ul style=\"margin: 0; padding-left: 20px; color: #d8d9da;\">\n      <li><strong>Time Range:</strong> Use the time picker in the top-right to focus on specific periods</li>\n      <li><strong>Refresh:</strong> Dashboards auto-refresh, but you can manually refresh if needed</li>\n      <li><strong>Drill Down:</strong> Click on any metric to get more detailed information</li>\n      <li><strong>Alerts:</strong> Pay attention to blue or orange indicators for immediate action items</li>\n    </ul>\n  </div>\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-overall-dashboard-dev/cvad-overall-dashboard-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 6
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^CVAD Overall Dashboard$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "CVAD Overall Dashboard",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/netscaler-status/netscaler-status-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "teal",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 5,
+        "y": 6
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^NetScaler Status$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "NetScaler Status",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/overall-dashboard-dev/xs-overall-dashboard-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "azure",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 10,
+        "y": 6
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^XenServer Overall Dashboard$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "XenServer Overall Dashboard",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-alerts-dev/cvad-alerts-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "purple",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 8
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^CVAD Alerts$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 12,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "CVAD Alerts",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/netscaler-status-alt/netscaler-status-dev-alt?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 5,
+        "y": 8
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^NetScaler Status Alt$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "NetScaler Status Alt",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/xs-pool-info-dev/xs-pool-info-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "turquoise",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 10,
+        "y": 8
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^XenServer Pool Info$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "XenServer Pool Info",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-site-dev/cvad-site-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "orange",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 10
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^CVAD Site$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "CVAD Site",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/win-server-status-dev/win-server-status-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 5,
+        "y": 10
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Windows Server Status$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "Windows Server Status",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/xs-host-alerts/xs-host-alerts-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 10,
+        "y": 10
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^XenServer Host Alerts$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "XenServer Host Alerts",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-failures-dev/cvad-failures-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "violet",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 12
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^CVAD Failures$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "CVAD Failures",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/win-logontime-dev/win-logontime-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "pink",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 5,
+        "y": 12
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Windows Logon Time$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "Windows Logon Time",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/xs-host-info-dev/xs-host-info-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 10,
+        "y": 12
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^XenServer Host Info$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "XenServer Host Info",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/cvad-overall-details-dev/cvad-overall-details-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "magenta",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 0,
+        "y": 14
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^CVAD Overall Details$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "CVAD Overall Details",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [
+            {
+              "title": "Link",
+              "url": "/d/xs-vm-info-dev/xs-vm-info-dev?orgId=1"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "super-light-blue",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 10,
+        "y": 14
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^XenServer VM Info$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 16,
+          "valueSize": 16
+        },
+        "textMode": "name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "c3a5e98c-6e94-44b8-b894-ae05241051b7"
+          },
+          "editorMode": "code",
+          "expr": "count(samm_host_count)",
+          "instant": false,
+          "legendFormat": "XenServer VM Info",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [
+    "main",
+    "home",
+    "navigation",
+    "dashboard"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "Main Dashboard",
+          "value": "Main Dashboard"
+        },
+        "hide": 2,
+        "name": "dashboard_title",
+        "options": [
+          {
+            "selected": true,
+            "text": "Main Dashboard",
+            "value": "Main Dashboard"
+          }
+        ],
+        "query": "Main Dashboard",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "Central Navigation Hub",
+          "value": "Central Navigation Hub"
+        },
+        "hide": 2,
+        "name": "dashboard_subtitle",
+        "options": [
+          {
+            "selected": true,
+            "text": "Central Navigation Hub",
+            "value": "Central Navigation Hub"
+          }
+        ],
+        "query": "Central Navigation Hub",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "samm-main-dev",
+  "uid": "main-dev",
+  "version": 25
+}

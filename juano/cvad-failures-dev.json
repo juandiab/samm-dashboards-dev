@@ -37,26 +37,37 @@
   ],
   "panels": [
     {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 11,
-      "libraryPanel": {
-        "name": "Dashboard Header",
-        "uid": "bev3km84zcmiod"
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 24px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 50%, #ff006e 100%); border-radius: 1px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 28px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 20px 20px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 66px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -0.6px; text-shadow: 0 3px 6px rgba(0,0,0,0.6); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #bbb; font-size: 13px; margin: 5px 0 0 0; font-weight: 500; opacity: 0.95;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
       },
+      "pluginVersion": "12.2.0-16711121739",
       "title": "",
-      "type": "library-panel-ref"
+      "transparent": true,
+      "type": "text"
     },
     {
       "gridPos": {
-        "h": 17,
+        "h": 16,
         "w": 1,
         "x": 0,
-        "y": 4
+        "y": 3
       },
       "id": 12,
       "libraryPanel": {
@@ -95,10 +106,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 7,
         "x": 1,
-        "y": 4
+        "y": 3
       },
       "id": 3,
       "options": {
@@ -144,10 +155,10 @@
     },
     {
       "gridPos": {
-        "h": 17,
+        "h": 16,
         "w": 1,
         "x": 8,
-        "y": 4
+        "y": 3
       },
       "id": 13,
       "libraryPanel": {
@@ -156,6 +167,456 @@
       },
       "title": "",
       "type": "library-panel-ref"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 9,
+        "y": 3
+      },
+      "id": 9,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  dg.Name, COUNT(*)\r\nFROM\r\n  MonitorData.Machine m,\r\n  MonitorData.DesktopGroup dg\r\nWHERE\r\n  (\r\n    CurrentRegistrationState = 2\r\n    AND CurrentPowerState = 3\r\n    AND m.IsInMaintenanceMode = 0\r\n    AND DesktopGroupId IS NOT NULL\r\n    AND dg.id = m.DesktopGroupId\r\n    AND DateDiff(hour, LastDeregisteredDate, getdate()) > 1\r\n  )\r\nGROUP BY (dg.Name)",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Machines ON but not Registered",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "${datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Power State"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Unavailable"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "Off"
+                      },
+                      "3": {
+                        "index": 3,
+                        "text": "On"
+                      },
+                      "4": {
+                        "index": 4,
+                        "text": "Suspended"
+                      },
+                      "5": {
+                        "index": 5,
+                        "text": "TurningOn"
+                      },
+                      "6": {
+                        "index": 6,
+                        "text": "TurningOff"
+                      },
+                      "7": {
+                        "index": 7,
+                        "text": "Suspending"
+                      },
+                      "8": {
+                        "index": 8,
+                        "text": "Resuming"
+                      },
+                      "9": {
+                        "index": 9,
+                        "text": "Unmanaged"
+                      },
+                      "10": {
+                        "index": 10,
+                        "text": "NotSupported"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Registration State"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "Unknown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "Registered"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "Unregistered"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last Error Code"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 0,
+                        "text": "AgentShutdown"
+                      },
+                      "1": {
+                        "index": 1,
+                        "text": "AgentSuspended"
+                      },
+                      "2": {
+                        "index": 2,
+                        "text": "AgentRequested"
+                      },
+                      "100": {
+                        "index": 3,
+                        "text": "IncompatibleVersion"
+                      },
+                      "101": {
+                        "index": 4,
+                        "text": "AgentAddressResolutionFailed"
+                      },
+                      "102": {
+                        "index": 5,
+                        "text": "AgentNotContactable"
+                      },
+                      "103": {
+                        "index": 6,
+                        "text": "AgentWrongActiveDirectoryOU"
+                      },
+                      "104": {
+                        "index": 7,
+                        "text": "EmptyRegistrationRequest"
+                      },
+                      "105": {
+                        "index": 8,
+                        "text": "MissingRegistrationCapabilities"
+                      },
+                      "106": {
+                        "index": 9,
+                        "text": "MissingAgentVersion"
+                      },
+                      "107": {
+                        "index": 10,
+                        "text": "InconsistentRegistrationCapabilities"
+                      },
+                      "108": {
+                        "index": 11,
+                        "text": "NotLicensedForFeature"
+                      },
+                      "109": {
+                        "index": 12,
+                        "text": "UnsupportedCredentialSecurityVersion"
+                      },
+                      "110": {
+                        "index": 13,
+                        "text": "InvalidRegistrationRequest"
+                      },
+                      "111": {
+                        "index": 14,
+                        "text": "SingleMultiSessionMismatch"
+                      },
+                      "112": {
+                        "index": 15,
+                        "text": "FunctionalLevelTooLowForCatalog"
+                      },
+                      "113": {
+                        "index": 16,
+                        "text": "FunctionalLevelTooLowForDesktopGroup"
+                      },
+                      "114": {
+                        "index": 17,
+                        "text": "OSNotCompatibleWithDdc"
+                      },
+                      "115": {
+                        "index": 18,
+                        "text": "VMNotCompatibleWithDdc"
+                      },
+                      "200": {
+                        "index": 19,
+                        "text": "PowerOff"
+                      },
+                      "201": {
+                        "index": 20,
+                        "text": "DesktopRestart"
+                      },
+                      "202": {
+                        "index": 21,
+                        "text": "DesktopRemoved"
+                      },
+                      "203": {
+                        "index": 22,
+                        "text": "AgentRejectedSettingsUpdate"
+                      },
+                      "204": {
+                        "index": 23,
+                        "text": "SendSettingsFailure"
+                      },
+                      "205": {
+                        "index": 24,
+                        "text": "SessionAuditFailure"
+                      },
+                      "206": {
+                        "index": 25,
+                        "text": "SessionPrepareFailure"
+                      },
+                      "207": {
+                        "index": 26,
+                        "text": "ContactLost"
+                      },
+                      "208": {
+                        "index": 27,
+                        "text": "SettingsCreationFailure"
+                      },
+                      "300": {
+                        "index": 28,
+                        "text": "SettingsCreationFailure"
+                      },
+                      "301": {
+                        "index": 29,
+                        "text": "BrokerRegistrationLimitReached"
+                      },
+                      "400": {
+                        "index": 30,
+                        "text": "None"
+                      },
+                      "401": {
+                        "index": 31,
+                        "text": "HypervisorReportedFailure"
+                      },
+                      "402": {
+                        "index": 32,
+                        "text": "HypervisorRateLimitExceeded"
+                      },
+                      "1000": {
+                        "index": 33,
+                        "text": "HardRegistrationPending"
+                      },
+                      "1001": {
+                        "index": 34,
+                        "text": "SoftRegistered"
+                      },
+                      "1002": {
+                        "index": 35,
+                        "text": "Unknown"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last Error Date"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeFromNow"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 17,
+        "y": 3
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.0-16711121739",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(*) as Value\r\nFROM\r\n  MonitorData.Machine m,\r\n  MonitorData.DesktopGroup dg\r\nWHERE\r\n  (\r\n    CurrentRegistrationState = 2\r\n    AND CurrentPowerState = 3\r\n    AND m.IsInMaintenanceMode = 0\r\n    AND DesktopGroupId IS NOT NULL\r\n    AND dg.id = m.DesktopGroupId\r\n    AND DateDiff(hour, LastDeregisteredDate, getdate()) > 1\r\n  )",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Machines ON but not Registered",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -591,10 +1052,10 @@
         ]
       },
       "gridPos": {
-        "h": 13,
+        "h": 7,
         "w": 15,
         "x": 9,
-        "y": 4
+        "y": 7
       },
       "id": 4,
       "options": {
@@ -737,7 +1198,7 @@
         "h": 5,
         "w": 7,
         "x": 1,
-        "y": 10
+        "y": 8
       },
       "id": 1,
       "options": {
@@ -1223,7 +1684,7 @@
         "h": 6,
         "w": 7,
         "x": 1,
-        "y": 15
+        "y": 13
       },
       "id": 2,
       "options": {
@@ -1329,456 +1790,6 @@
         }
       ],
       "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "mssql",
-        "uid": "${datasource}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "#EAB839",
-                "value": 1
-              },
-              {
-                "color": "red",
-                "value": 5
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 5,
-        "x": 9,
-        "y": 17
-      },
-      "id": 9,
-      "options": {
-        "displayMode": "gradient",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "left",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": true
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "mssql",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  dg.Name, COUNT(*)\r\nFROM\r\n  MonitorData.Machine m,\r\n  MonitorData.DesktopGroup dg\r\nWHERE\r\n  (\r\n    CurrentRegistrationState = 2\r\n    AND CurrentPowerState = 3\r\n    AND m.IsInMaintenanceMode = 0\r\n    AND DesktopGroupId IS NOT NULL\r\n    AND dg.id = m.DesktopGroupId\r\n    AND DateDiff(hour, LastDeregisteredDate, getdate()) > 1\r\n  )\r\nGROUP BY (dg.Name)",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Machines ON but not Registered",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "mssql",
-        "uid": "${datasource}"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Power State"
-            },
-            "properties": [
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "0": {
-                        "index": 0,
-                        "text": "Unknown"
-                      },
-                      "1": {
-                        "index": 1,
-                        "text": "Unavailable"
-                      },
-                      "2": {
-                        "index": 2,
-                        "text": "Off"
-                      },
-                      "3": {
-                        "index": 3,
-                        "text": "On"
-                      },
-                      "4": {
-                        "index": 4,
-                        "text": "Suspended"
-                      },
-                      "5": {
-                        "index": 5,
-                        "text": "TurningOn"
-                      },
-                      "6": {
-                        "index": 6,
-                        "text": "TurningOff"
-                      },
-                      "7": {
-                        "index": 7,
-                        "text": "Suspending"
-                      },
-                      "8": {
-                        "index": 8,
-                        "text": "Resuming"
-                      },
-                      "9": {
-                        "index": 9,
-                        "text": "Unmanaged"
-                      },
-                      "10": {
-                        "index": 10,
-                        "text": "NotSupported"
-                      }
-                    },
-                    "type": "value"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Registration State"
-            },
-            "properties": [
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "0": {
-                        "index": 0,
-                        "text": "Unknown"
-                      },
-                      "1": {
-                        "index": 1,
-                        "text": "Registered"
-                      },
-                      "2": {
-                        "index": 2,
-                        "text": "Unregistered"
-                      }
-                    },
-                    "type": "value"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Last Error Code"
-            },
-            "properties": [
-              {
-                "id": "mappings",
-                "value": [
-                  {
-                    "options": {
-                      "0": {
-                        "index": 0,
-                        "text": "AgentShutdown"
-                      },
-                      "1": {
-                        "index": 1,
-                        "text": "AgentSuspended"
-                      },
-                      "2": {
-                        "index": 2,
-                        "text": "AgentRequested"
-                      },
-                      "100": {
-                        "index": 3,
-                        "text": "IncompatibleVersion"
-                      },
-                      "101": {
-                        "index": 4,
-                        "text": "AgentAddressResolutionFailed"
-                      },
-                      "102": {
-                        "index": 5,
-                        "text": "AgentNotContactable"
-                      },
-                      "103": {
-                        "index": 6,
-                        "text": "AgentWrongActiveDirectoryOU"
-                      },
-                      "104": {
-                        "index": 7,
-                        "text": "EmptyRegistrationRequest"
-                      },
-                      "105": {
-                        "index": 8,
-                        "text": "MissingRegistrationCapabilities"
-                      },
-                      "106": {
-                        "index": 9,
-                        "text": "MissingAgentVersion"
-                      },
-                      "107": {
-                        "index": 10,
-                        "text": "InconsistentRegistrationCapabilities"
-                      },
-                      "108": {
-                        "index": 11,
-                        "text": "NotLicensedForFeature"
-                      },
-                      "109": {
-                        "index": 12,
-                        "text": "UnsupportedCredentialSecurityVersion"
-                      },
-                      "110": {
-                        "index": 13,
-                        "text": "InvalidRegistrationRequest"
-                      },
-                      "111": {
-                        "index": 14,
-                        "text": "SingleMultiSessionMismatch"
-                      },
-                      "112": {
-                        "index": 15,
-                        "text": "FunctionalLevelTooLowForCatalog"
-                      },
-                      "113": {
-                        "index": 16,
-                        "text": "FunctionalLevelTooLowForDesktopGroup"
-                      },
-                      "114": {
-                        "index": 17,
-                        "text": "OSNotCompatibleWithDdc"
-                      },
-                      "115": {
-                        "index": 18,
-                        "text": "VMNotCompatibleWithDdc"
-                      },
-                      "200": {
-                        "index": 19,
-                        "text": "PowerOff"
-                      },
-                      "201": {
-                        "index": 20,
-                        "text": "DesktopRestart"
-                      },
-                      "202": {
-                        "index": 21,
-                        "text": "DesktopRemoved"
-                      },
-                      "203": {
-                        "index": 22,
-                        "text": "AgentRejectedSettingsUpdate"
-                      },
-                      "204": {
-                        "index": 23,
-                        "text": "SendSettingsFailure"
-                      },
-                      "205": {
-                        "index": 24,
-                        "text": "SessionAuditFailure"
-                      },
-                      "206": {
-                        "index": 25,
-                        "text": "SessionPrepareFailure"
-                      },
-                      "207": {
-                        "index": 26,
-                        "text": "ContactLost"
-                      },
-                      "208": {
-                        "index": 27,
-                        "text": "SettingsCreationFailure"
-                      },
-                      "300": {
-                        "index": 28,
-                        "text": "SettingsCreationFailure"
-                      },
-                      "301": {
-                        "index": 29,
-                        "text": "BrokerRegistrationLimitReached"
-                      },
-                      "400": {
-                        "index": 30,
-                        "text": "None"
-                      },
-                      "401": {
-                        "index": 31,
-                        "text": "HypervisorReportedFailure"
-                      },
-                      "402": {
-                        "index": 32,
-                        "text": "HypervisorRateLimitExceeded"
-                      },
-                      "1000": {
-                        "index": 33,
-                        "text": "HardRegistrationPending"
-                      },
-                      "1001": {
-                        "index": 34,
-                        "text": "SoftRegistered"
-                      },
-                      "1002": {
-                        "index": 35,
-                        "text": "Unknown"
-                      }
-                    },
-                    "type": "value"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Last Error Date"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeFromNow"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 5,
-        "x": 14,
-        "y": 17
-      },
-      "id": 8,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0-16711121739",
-      "targets": [
-        {
-          "datasource": {
-            "type": "mssql",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(*) as Value\r\nFROM\r\n  MonitorData.Machine m,\r\n  MonitorData.DesktopGroup dg\r\nWHERE\r\n  (\r\n    CurrentRegistrationState = 2\r\n    AND CurrentPowerState = 3\r\n    AND m.IsInMaintenanceMode = 0\r\n    AND DesktopGroupId IS NOT NULL\r\n    AND dg.id = m.DesktopGroupId\r\n    AND DateDiff(hour, LastDeregisteredDate, getdate()) > 1\r\n  )",
-          "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Machines ON but not Registered",
-      "type": "stat"
     },
     {
       "datasource": {
@@ -2091,10 +2102,10 @@
         ]
       },
       "gridPos": {
-        "h": 4,
-        "w": 5,
-        "x": 19,
-        "y": 17
+        "h": 5,
+        "w": 15,
+        "x": 9,
+        "y": 14
       },
       "id": 10,
       "options": {
@@ -2199,19 +2210,19 @@
       },
       {
         "current": {
-          "text": "CVAD Failures",
-          "value": "CVAD Failures"
+          "text": "Citrix Failures",
+          "value": "Citrix Failures"
         },
         "hide": 2,
         "name": "dashboard_title",
         "options": [
           {
             "selected": true,
-            "text": "CVAD Failures",
-            "value": "CVAD Failures"
+            "text": "Citrix Failures",
+            "value": "Citrix Failures"
           }
         ],
-        "query": "CVAD Failures",
+        "query": "Citrix Failures",
         "type": "textbox"
       },
       {
@@ -2241,5 +2252,5 @@
   "timezone": "",
   "title": "cvad-failures-dev",
   "uid": "cvad-failures-dev",
-  "version": 2
+  "version": 6
 }

@@ -47,19 +47,30 @@
   ],
   "panels": [
     {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 25,
-      "libraryPanel": {
-        "name": "Dashboard Header",
-        "uid": "bev3km84zcmiod"
+      "id": 26,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 24px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 50%, #ff006e 100%); border-radius: 1px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 28px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 20px 20px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 66px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -0.6px; text-shadow: 0 3px 6px rgba(0,0,0,0.6); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #bbb; font-size: 13px; margin: 5px 0 0 0; font-weight: 500; opacity: 0.95;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
       },
+      "pluginVersion": "12.2.0-16711121739",
       "title": "",
-      "type": "library-panel-ref"
+      "transparent": true,
+      "type": "text"
     },
     {
       "datasource": {
@@ -106,11 +117,11 @@
         "h": 2,
         "w": 12,
         "x": 0,
-        "y": 4
+        "y": 3
       },
       "id": 22,
       "options": {
-        "colorMode": "background",
+        "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -190,7 +201,7 @@
         "h": 8,
         "w": 3,
         "x": 12,
-        "y": 4
+        "y": 3
       },
       "id": 13,
       "options": {
@@ -311,7 +322,7 @@
         "h": 11,
         "w": 9,
         "x": 15,
-        "y": 4
+        "y": 3
       },
       "id": 20,
       "options": {
@@ -400,11 +411,11 @@
         "h": 2,
         "w": 3,
         "x": 0,
-        "y": 6
+        "y": 5
       },
       "id": 23,
       "options": {
-        "colorMode": "background",
+        "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -441,7 +452,6 @@
         }
       ],
       "title": "",
-      "transparent": true,
       "type": "stat"
     },
     {
@@ -453,7 +463,7 @@
         "h": 11,
         "w": 9,
         "x": 3,
-        "y": 6
+        "y": 5
       },
       "id": 11,
       "options": {
@@ -518,10 +528,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 3,
         "x": 0,
-        "y": 8
+        "y": 7
       },
       "id": 24,
       "options": {
@@ -562,7 +572,6 @@
         }
       ],
       "title": "",
-      "transparent": true,
       "type": "stat"
     },
     {
@@ -599,7 +608,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 12
+        "y": 11
       },
       "id": 15,
       "options": {
@@ -681,7 +690,7 @@
         "h": 2,
         "w": 12,
         "x": 12,
-        "y": 15
+        "y": 14
       },
       "id": 5,
       "options": {
@@ -797,7 +806,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 17
+        "y": 16
       },
       "id": 18,
       "options": {
@@ -913,7 +922,7 @@
         "h": 8,
         "w": 8,
         "x": 7,
-        "y": 17
+        "y": 16
       },
       "id": 14,
       "options": {
@@ -1044,7 +1053,7 @@
         "h": 8,
         "w": 9,
         "x": 15,
-        "y": 17
+        "y": 16
       },
       "id": 19,
       "options": {
@@ -1143,7 +1152,7 @@
         "h": 3,
         "w": 8,
         "x": 7,
-        "y": 25
+        "y": 24
       },
       "id": 4,
       "options": {
@@ -1249,7 +1258,7 @@
         "h": 3,
         "w": 9,
         "x": 15,
-        "y": 25
+        "y": 24
       },
       "id": 1,
       "options": {
@@ -1377,8 +1386,8 @@
       },
       {
         "current": {
-          "text": "Running",
-          "value": "Running"
+          "text": "Halted",
+          "value": "Halted"
         },
         "datasource": {
           "type": "prometheus",
@@ -1402,8 +1411,8 @@
       },
       {
         "current": {
-          "text": "6268e515-3181-4fcf-b4d8-fc99d405077a",
-          "value": "6268e515-3181-4fcf-b4d8-fc99d405077a"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1427,8 +1436,8 @@
       },
       {
         "current": {
-          "text": "{guest_metrics=\"5b57fa31-1989-9477-7df6-b65eeb9c61f3\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Running\",resident_on=\"6268e515-3181-4fcf-b4d8-fc99d405077a\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1756239336000",
-          "value": "{guest_metrics=\"5b57fa31-1989-9477-7df6-b65eeb9c61f3\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Running\",resident_on=\"6268e515-3181-4fcf-b4d8-fc99d405077a\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1756239336000"
+          "text": "{guest_metrics=\"2f2a1f08-0424-a00b-5b41-5bd83591ae2e\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Halted\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1758294143000",
+          "value": "{guest_metrics=\"2f2a1f08-0424-a00b-5b41-5bd83591ae2e\",instance=\"samm-xen-pool1:8000\",job=\"samm-xen\",name_label=\"XS10MainPVS0027\",os_version_distro=\"windows\",power_state=\"Halted\",uuid=\"6680d6a5-3b46-686a-57a6-900d00a1d5e5\"} 1 1758294143000"
         },
         "datasource": {
           "type": "prometheus",
@@ -1527,8 +1536,8 @@
       },
       {
         "current": {
-          "text": "5b57fa31-1989-9477-7df6-b65eeb9c61f3",
-          "value": "5b57fa31-1989-9477-7df6-b65eeb9c61f3"
+          "text": "2f2a1f08-0424-a00b-5b41-5bd83591ae2e",
+          "value": "2f2a1f08-0424-a00b-5b41-5bd83591ae2e"
         },
         "datasource": {
           "type": "prometheus",
@@ -1574,8 +1583,8 @@
       },
       {
         "current": {
-          "text": "cim_os_lastbootuptime{caption=\"Microsoft Windows 10 Enterprise N\",dn=\"cn=xs10mainpvs0027,ou=mainpvs,ou=pooled vdesktops,ou=production 1912,ou=citrix,ou=technologies,ou=security principals,dc=pr,dc=mmmhc,dc=com\",fqdn=\"xs10mainpvs0027.pr.mmmhc.com\",instance=\"xs10mainpvs0027\",job=\"samm-xs10mainpvs\",layer=\"resource\",osarchitecture=\"64-bit\",role=\"cvad_vdi\",status=\"OK\"} 1756188196 1756239336000",
-          "value": "cim_os_lastbootuptime{caption=\"Microsoft Windows 10 Enterprise N\",dn=\"cn=xs10mainpvs0027,ou=mainpvs,ou=pooled vdesktops,ou=production 1912,ou=citrix,ou=technologies,ou=security principals,dc=pr,dc=mmmhc,dc=com\",fqdn=\"xs10mainpvs0027.pr.mmmhc.com\",instance=\"xs10mainpvs0027\",job=\"samm-xs10mainpvs\",layer=\"resource\",osarchitecture=\"64-bit\",role=\"cvad_vdi\",status=\"OK\"} 1756188196 1756239336000"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1597,8 +1606,8 @@
       },
       {
         "current": {
-          "text": "3xkloud04c",
-          "value": "3xkloud04c"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1620,8 +1629,8 @@
       },
       {
         "current": {
-          "text": "172.29.1.16",
-          "value": "172.29.1.16"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1643,8 +1652,8 @@
       },
       {
         "current": {
-          "text": "6268e515-3181-4fcf-b4d8-fc99d405077a",
-          "value": "6268e515-3181-4fcf-b4d8-fc99d405077a"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1666,8 +1675,8 @@
       },
       {
         "current": {
-          "text": "Pool VDI 01",
-          "value": "Pool VDI 01"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1689,8 +1698,8 @@
       },
       {
         "current": {
-          "text": "samm-xen-pool1:8000",
-          "value": "samm-xen-pool1:8000"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1712,8 +1721,8 @@
       },
       {
         "current": {
-          "text": "f47ed948-df7e-54c1-2626-f0cdaad37f78",
-          "value": "f47ed948-df7e-54c1-2626-f0cdaad37f78"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1735,8 +1744,8 @@
       },
       {
         "current": {
-          "text": "3xkloud04c",
-          "value": "3xkloud04c"
+          "text": "",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1838,5 +1847,5 @@
   "timezone": "browser",
   "title": "xs-vm-info-dev",
   "uid": "xs-vm-info-dev",
-  "version": 11
+  "version": 13
 }

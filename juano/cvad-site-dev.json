@@ -37,19 +37,30 @@
   ],
   "panels": [
     {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 8,
-      "libraryPanel": {
-        "name": "Dashboard Header",
-        "uid": "bev3km84zcmiod"
+      "id": 12,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='background: transparent; padding: 8px 12px 24px 12px; position: relative; overflow: hidden;'>\n  <div style='position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00d4ff 0%, #5b63d3 50%, #ff006e 100%); border-radius: 1px;'></div>\n  <div style='display: flex; align-items: center; justify-content: space-between;'>\n    <div style='display: flex; align-items: center; gap: 28px;'>\n      <div style='background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 4px; border-radius: 0 0 20px 20px; border: 1px solid #444; box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);'>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samm-logo.svg' alt='SAMM Logo' style='height: 66px; width: auto; filter: brightness(0) invert(1); cursor: pointer;' /></a>\n      </div>\n      <div>\n        <a href='/d/main-dev/samm-main-dev?orgId=1' style='text-decoration: none;'><h1 style='color: #ffffff; font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -0.6px; text-shadow: 0 3px 6px rgba(0,0,0,0.6); cursor: pointer;'>${dashboard_title}</h1></a>\n        <p style='color: #bbb; font-size: 13px; margin: 5px 0 0 0; font-weight: 500; opacity: 0.95;'>${dashboard_subtitle}</p>\n      </div>\n    </div>\n    <div style='display: flex; align-items: center;'>\n      <img src='https://s3.us-east-1.amazonaws.com/samm.samana.cloud/media/samana-logo-white.png' alt='Samana Logo' style='height: 27px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));' />\n    </div>\n  </div>\n</div>",
+        "mode": "html"
       },
+      "pluginVersion": "12.2.0-16711121739",
       "title": "",
-      "type": "library-panel-ref"
+      "transparent": true,
+      "type": "text"
     },
     {
       "description": "",
@@ -61,7 +72,7 @@
         "h": 15,
         "w": 1,
         "x": 0,
-        "y": 4
+        "y": 3
       },
       "id": 9,
       "options": {
@@ -179,7 +190,7 @@
         "h": 8,
         "w": 4,
         "x": 1,
-        "y": 4
+        "y": 3
       },
       "id": 6,
       "options": {
@@ -350,7 +361,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 4
+        "y": 3
       },
       "id": 4,
       "options": {
@@ -616,7 +627,7 @@
         "h": 8,
         "w": 5,
         "x": 10,
-        "y": 4
+        "y": 3
       },
       "id": 2,
       "options": {
@@ -777,7 +788,7 @@
         "h": 15,
         "w": 9,
         "x": 15,
-        "y": 4
+        "y": 3
       },
       "id": 11,
       "options": {
@@ -1011,7 +1022,7 @@
         "h": 7,
         "w": 9,
         "x": 1,
-        "y": 12
+        "y": 11
       },
       "id": 7,
       "options": {
@@ -1428,7 +1439,7 @@
         "h": 7,
         "w": 5,
         "x": 10,
-        "y": 12
+        "y": 11
       },
       "id": 5,
       "options": {
@@ -1620,5 +1631,5 @@
   "timezone": "",
   "title": "cvad-site-dev",
   "uid": "cvad-site-dev",
-  "version": 4
+  "version": 5
 }
