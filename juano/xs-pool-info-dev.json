@@ -887,7 +887,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-pool-info-dev",
+  "title": "XenServer Pool Info",
   "uid": "xs-pool-info-dev",
   "version": 9
 }

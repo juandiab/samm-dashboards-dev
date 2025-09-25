@@ -1744,7 +1744,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-overall-dashboard-dev",
+  "title": "XenServer Overall Dashboard",
   "uid": "overall-dashboard-dev",
   "version": 9
 }

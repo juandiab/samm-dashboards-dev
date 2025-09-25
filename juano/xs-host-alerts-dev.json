@@ -1768,7 +1768,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-host-alerts-dev",
+  "title": "XenServer Host Alerts",
   "uid": "xs-host-alerts",
   "version": 7
 }

@@ -1466,7 +1466,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-host-info-dev",
+  "title": "XenServer Host Info",
   "uid": "xs-host-info-dev",
   "version": 14
 }

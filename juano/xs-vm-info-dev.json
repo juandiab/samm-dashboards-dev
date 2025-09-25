@@ -1845,7 +1845,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "xs-vm-info-dev",
+  "title": "XenServer VM Info",
   "uid": "xs-vm-info-dev",
   "version": 13
 }
